@@ -1,11 +1,38 @@
+/*
+ * Copyright (c) 2015 Daniel Beßler
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the Technische Universiteit Eindhoven nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
 package org.knowrob.interfaces.mongo;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.GregorianCalendar;
 
@@ -17,6 +44,11 @@ import org.ros.node.topic.Publisher;
 
 import com.mongodb.BasicDBObject;
 
+/**
+ * Republishing of ROS messages logged with mongodb_log.
+ * 
+ * @param <RosType> The ROS message type
+ */
 public class MongoRosMessage<RosType> {
 	Publisher<RosType> pub = null;
 	// e.g. "std_msgs/String"
@@ -32,23 +64,39 @@ public class MongoRosMessage<RosType> {
 		this.pub = node.newPublisher(topic, typeName);
 	}
 
+	/**
+	 * Publishes a ROS message instantiated by a mongo DB record.
+	 * @param mngObj A DB object
+	 * @return True if the message was published successfully
+	 */
 	public boolean publish(BasicDBObject mngObj) {
 		if(pub==null) {
+			// TODO proper logging
 			System.err.println("Not connected.");
 			return false;
 		}
 		try {
-			final RosType msg = pub.newMessage();
-			createMessage(msg, mngObj);
-			pub.publish(msg);
-	
+			pub.publish(createMessage(mngObj));
 			return true;
 		}
 		catch (Exception e) {
+			// TODO proper logging
 			System.err.println("Failed to publish message: " + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	/**
+	 * Instantiates a ROS message by a mongo DB record.
+	 * @param mngObj A DB object
+	 * @return A ROS message
+	 * @throws IOException
+	 */
+	public RosType createMessage(BasicDBObject mngObj) throws IOException {
+		final RosType msg = pub.newMessage();
+		createMessage(msg, mngObj);
+		return msg;
 	}
 
 	protected void createMessage(Object msg, BasicDBObject mngObj) throws IOException {
@@ -78,7 +126,7 @@ public class MongoRosMessage<RosType> {
 					createMessage(getter.invoke(msg), (BasicDBObject)value);
 				} 
 				catch (Exception e) {
-					// TODO Auto-generated catch block
+					// TODO proper logging
 					System.err.println("Failed to get message field '" + fieldName + "'" +
 							". Error: " + e.getMessage());
 					e.printStackTrace();
@@ -115,7 +163,7 @@ public class MongoRosMessage<RosType> {
 			m.invoke(msg, value);
 		}
 		catch (Exception e) {
-			// TODO Auto-generated catch block
+			// TODO proper logging
 			System.err.println("Failed to set message field '" + fieldName + "'" +
 					". Value type: " + value.getClass().getName() +
 					". Method argument type: " + m.getParameterTypes()[0].getName() +
