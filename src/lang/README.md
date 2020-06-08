@@ -55,7 +55,7 @@ argument from the declaration (above: the `Context` argument of predicates).
 This is handy for declaring context-invariant rules.
 However, rules may be written that retrieve or update the context hidden
 in the operator.
-This is possible through a DSL that is designed to interact
+This is possible through a Domain Specific Language(DSL) that is designed to interact
 with the hidden context argument.
 
 Within tell rules, context is a tuple of
@@ -65,6 +65,7 @@ in which the statement is true, for example,
 that some statement is true after some event has happened.
 The scope must be instantiated before calling the tell predicate.
 Statements in tell rules expand into scoped assertions in the triple store.
+
 Within ask rules, on the other hand, context has an additional 
 query scope (also called question scope).
 Question scopes are used to restrict the scope
@@ -77,7 +78,7 @@ the statament scope is instantiated to the intersection
 of individual statement scopes (if the intersection is not empty).
 
 Special scoping language terms are used to restrict the scope
-within a nested term. Restrictions of the scope will allways be passed
+within a nested term. Restrictions of the scope will always be passed
 through to child terms, hence the scoping is done in the outer term such as
 in `since(holds(S,P,O),Time)`. As these terms are usually defined as operators,
 one can also write, for example, `holds(S,P,O) since Time`.
