@@ -12,30 +12,30 @@
 
 %%% is_a 
 test("subclass_of") :-
-    is_a(test_pancake:'BakingAPancake', dul:'Task').
+	is_a(test_pancake:'BakingAPancake', dul:'Task').
 
 test("instance_of") :-
-    instance_of(test_pancake:'Baking_0', test_pancake:'BakingAPancake').
+	instance_of(test_pancake:'Baking_0', test_pancake:'BakingAPancake').
 
-test("tell_instance_of") :-
-    \+ instance_of(test_pancake:'Baking_0', dul:'Workflow').
+%test("tell_instance_of") :-
+	%tell(instance_of(test_pancake:'Baking_0', dul:'Workflow')).
 
 test("ask_instance_of") :-
-    instance_of(test_pancake:'Baking_0', dul:'Workflow').
+	instance_of(test_pancake:'Baking_0', dul:'Workflow').
 
 test("tell_list_instance_of") :-
-    \+ instance_of(test_pancake:'Baking_0', [test_pancake:'BakingAPancake', dul:'Workflow']).
+	\+ instance_of(test_pancake:'Baking_0', [test_pancake:'BakingAPancake', dul:'Workflow']).
 
 test("ask_list_instance_of") :-
-    instance_of(test_pancake:'Baking_0', [test_pancake:'BakingAPancake', dul:'Workflow']).
+	instance_of(test_pancake:'Baking_0', [test_pancake:'BakingAPancake', dul:'Workflow']).
 
 test('subproperty') :-
-    subproperty_of(knowrob:'actor', dul:'hasParticipant').
+	subproperty_of(knowrob:'actor', dul:'hasParticipant').
 
 %% instantiation error
 test('test_failing_case', ['fail']) :-
-    is_a(A, dul:'Task').
-    
+	is_a(A, dul:'Task').
+	
 
 end_tests('lang_is_a').
 

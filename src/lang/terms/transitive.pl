@@ -100,3 +100,24 @@ call_(Functor,S,P,O,Scope) :-
     Goal=..[Functor,S,P,O]
   ),
   ask(Goal,Scope).
+
+start :-
+  data(Q),
+  transitive(Q).
+
+data(test_swrl:'hasAncestor'(test_swrl:'Lea', test_swrl:'Fred')). 
+
+  
+
+
+
+% :- begin_tests(lang_transitive).
+
+:- tripledb_load('package://knowrob/owl/test/swrl.owl',
+      [ graph(user),
+        namespace(test_swrl,'http://knowrob.org/kb/swrl_test.owl#')
+      ]).
+
+
+% :- end_tests(lang_transitive).
+

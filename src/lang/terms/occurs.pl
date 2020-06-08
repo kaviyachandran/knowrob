@@ -49,3 +49,38 @@ occurs1(_,TimeScope)   +> { var(TimeScope),! }.
 occurs1(Evt,TimeScope) +>
   { time_scope_data(TimeScope,[Since,Until]) },
   has_interval_data(Evt,Since,Until).
+
+
+		 /*******************************
+		 *	    UNIT TESTS	     		*
+		 *******************************/
+
+:- begin_tests(lang_occurs).
+
+:- tripledb_load('package://knowrob/owl/test/events.owl',
+      [ graph(user),
+        namespace(test_events,'http://knowrob.org/kb/test_events.owl#')
+      ]).
+
+test('occurs_interval') :-
+  assert_true(occurs(test_events:'Short4') during [1377777009, 1377777011]),
+  assert_true(occurs(test_events:'Short1') during test_events:'Time_Short1').
+
+% test('occurs_tell') :-
+%   assert_true(tell(holds(test_swrl:'Fred', test_swrl:'hasAge', 34) until(2020))),
+%   assert_true(tell(holds(test_swrl:'Fred', test_swrl:'hasAge', 34) since(2019))).
+
+% test('occurs_until') :-
+%   assert_true(occurs(holds(test_swrl:'Lea', test_swrl:'hasNumber', '+493455247') until(34))),
+%   assert_true(occurs(holds(test_swrl:'Fred', test_swrl:'hasAge', 34) until(2020))).
+
+% test('occurs_since') :-
+%   assert_true(occurs(holds(test_swrl:'Lea', test_swrl:'hasNumber', '+493455247') since(10))),
+%   assert_true(occurs(holds(test_swrl:'Fred', test_swrl:'hasAge', 34) since(2019))).
+
+% test('occurs not') :-
+%   occurs(holds(test_swrl:'Fred', test_swrl:'hasAge', 25)).
+
+:-end_tests(lang_occurs).
+
+  

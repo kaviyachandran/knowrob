@@ -16,13 +16,14 @@
 %     mng_drop(DB,Inferred).
 
 
-test('memorize'):-
+test('memorize') :-
     memorize('testdb').
     %clear_db('testdb', 'tripledb', 'inferred').
 
-%:- tripledb_whipe.
+test('wipe db') :-
+    tripledb_whipe.
 
-% test('remember'):-
-%     remember('/home/kavya/ros_ws/src/knowrob/testdb').
+test('remember') :-
+    remember('/home/kavya/ros_ws/src/knowrob/testdb').
 
 :- end_tests('lang_export').

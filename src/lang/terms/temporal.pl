@@ -169,6 +169,24 @@ test('Lea not hasNumber during') :-
 	assert_false(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455247') during [5,20]),
 	assert_false(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455247') during [34,44]).
 
+test('Lea hasNumber until') :-
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455247') until(34)),
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455247') until(24)),
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455249') until(44)),
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455249') until(80)).
+
+test('Lea not hasNumber until') :-
+	assert_false(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493435247') until(5)).
+
+test('Lea hasNumber since') :-
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455247') since(10)),
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455247') since(14)),
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455249') since(34)),
+	assert_true(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493455249') since(38)).
+
+test('Lea not hasNumber since') :-
+	assert_false(holds(test_swrl:'Lea', test_swrl:hasNumber, '+493435247') since(5)).
+
 test('forget Lea hasNumber') :-
 	tripledb_forget(test_swrl:'Lea', test_swrl:hasNumber, _).
 
