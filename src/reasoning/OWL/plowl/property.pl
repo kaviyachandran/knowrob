@@ -156,7 +156,7 @@ owl_cardinality(S,P,R,Card,QScope->FScope) :-
   ( var(R) -> R0=_ ; R0=R ),
   findall([S0,P0,R0,V0,FS0],
     ask([ triple(S0,P0,V0), 
-          instance_of(V0,class(R0))
+          instance_of(V0,R0)
         ], QScope->FS0),
     Facts),
   Facts \= [],
@@ -203,7 +203,7 @@ owl_cardinality1_(_S,_P,_R,Facts,Card,FScope) :-
 
 %%
 owl_cardinality2_(Facts,Card0,FScope) :-
-  setof(V0, member([_,_,_,V0,_],Facts), Values),
+  findall(V0, member([_,_,_,V0,_],Facts), Values),
   % collect different scopes of the same value
   findall(FS0_list, (
     member(V1,Values),
@@ -219,7 +219,7 @@ owl_cardinality3_([], 0, FS->FS) :- !.
 owl_cardinality3_([FirstList|Rest], Card, FS_in->FS_out) :-
   % try to intersect with FS_in and continue
   ( scopes_intersect_(FirstList,FS_in,FS0) *->
-    ( Card0=1 );
+    ( Card0=1.0 );
     ( Card0=0, FS0=FS_in )
   ),
   % rescursion
