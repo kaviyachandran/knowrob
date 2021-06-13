@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob_common</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="wiki">knowrob_common</h1>
+
+<p>
+This package provides the core ontologies and reasoning rules
+of the KnowRob knowledge processing system for robots.</p>
+
+<h3 class="wiki">Semantics</h3>
+
+<p>
+KnowRob uses the Web Ontology Language (OWL) in combination with
+rule based reasoning powered by SWI Prolog.
+OWL ontologies can be parsed (<a href="owl_parser.html#owl_parse/1">owl_parse/1</a>) which causes new facts to be
+asserted in the RDF triple store of SWI Prolog.
+SWI Prolog already provides querying with RDFS semantics
+(<a class="extmanual" href="http://www.swi-prolog.org/pldoc/man?predicate=rdf_has/3">rdf_has/3</a>, <a class="extmanual" href="http://www.swi-prolog.org/pldoc/man?predicate=rdfs_individual_of/2">rdfs_individual_of/2</a>).</p>
+
+<p>
+Ontop of the RDFS semantics KnowRob implements a minimal OWL reasoner in Prolog.
+<a href="owl.html#owl_individual_of/2">owl_individual_of/2</a> checks if a resource satisfies a class description
+according to OWL-Description entailment rules,
+and <a href="owl.html#owl_has/3">owl_has/3</a> checks if a relation can be deduced using OWL inference rules.
+Some OWL2 features such as property chains are also supported,
+but the reasoner is not OWL2 complete.</p>
+
+<p>
+Between the RDFS and OWL layer KnowRob implements the computable semantics layer.
+OWL ontologies may describe how the existence of a relation can be computed
+in a given situation, and KnowRob uses the computation rules at query time
+to allow data abstraction on demand.
+The current implementation includes computable properties for
+qualitative spatial reasoning (comp_spatial),
+temporal reasoning about events (comp_temporal),
+object pose computation from tf message channel and mongo DB (knowrob_objects, knowrob_mongo),
+and SWRL rules (<code class="nofile">swrl.pl</code>).
+<a href="owl.html#owl_compute_individual_of/2">owl_compute_individual_of/2</a> expands <a href="owl.html#owl_individual_of/2">owl_individual_of/2</a>,
+and <a href="owl.html#owl_compute_has/3">owl_compute_has/3</a> expands <a href="owl.html#owl_has/3">owl_has/3</a> with computable semantics.</p>
+
+<p>
+Another additional semantic layer is added by KnowRob to integrate
+temporal information in the reasoning process,
+allowing robots to reason about past events.
+KnowRob follows the convention that objects generally can have
+temporal parts, which describe relations that only hold
+during the lifespan of the temporal part.
+<code class="nofile">temporal.pl</code> provides interfaces to maintain the temporal parts
+of an object.
+<a href="temporal.html#owl_individual_of_during/3">owl_individual_of_during/3</a> expands <a href="owl.html#owl_compute_individual_of/2">owl_compute_individual_of/2</a>,
+and <a class="extmanual" href="http://www.swi-prolog.org/pldoc/man?predicate=owl_has_has/4">owl_has_has/4</a> expands <a href="owl.html#owl_compute_has/3">owl_compute_has/3</a> with temporal semantics.
+Finally, <a href="temporal.html#holds/2">holds/2</a> allows to put triples in a term Predicate(Subject,Object):</p>
+
+<pre class="code">
+holds(knowrob:volumeOfObject(Obj, literal(type(xsd:float,15.0))), 25.0)
+</pre>
+
+<h3 class="wiki">Ontologies</h3>
+
+<p>
+<div class="figure">
+<div class="image"><img alt="img/ontology.png" border="0" src="../../knowrob_common/img/ontology.png"></div>
+<div class="caption"><w>Upper</w> <w>ontology</w></div>
+</div>
+</p>
+
+<h3 class="wiki">Entity descriptions</h3>
+
+<pre class="code">
+entity(Cont, [an, object,
+    [type, container]]).
+
+entity(Loc, [a, location, [in-cont_generic,
+    [an, object, [type, container]]]]).
+
+entity(Obj, [an, object,
+    [type, storage_construct],
+    [type, restriction(
+        knowrob:'typePrimaryFunction-containerFor',
+        some_values_from(knowrob:'Perishable'))]
+])
+</pre>
+
+<h2 class="wiki subdirs">Sub directories</h2>
+
+<table class="subdirs">
+<tr><td><a class="subdir" href="prolog/index.html">[dir] prolog</a></td></tr>
+</table>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+</table>
+
+</body>
+</html>

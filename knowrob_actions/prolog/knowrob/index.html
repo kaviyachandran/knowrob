@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">knowrob</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="action_effects.html">action_effects.pl</a></span>&nbsp; -- Prediction of action effects<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="action_effects.html#action_precondition_check/1">action_precondition_check/1</a></td><td class="summary">True if Act is an action without unsatisfied preconditions, or if Effect is a satisfied precondition of Act.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_effects.html#action_effect_apply/2">action_effect_apply/2</a></td><td class="summary">Effect is a RDF SWRL rule that expresses an effect of Act.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_effects.html#action_effect_on_object/2">action_effect_on_object/2</a></td><td class="summary">Reasoning about which ActionClass (when the action is successfully performed) will have a desired effect on the object manipulated during the action.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_effects.html#action_effects_apply/1">action_effects_apply/1</a></td><td class="summary">Apply all the effects that are known to apply if Act is performed successfully.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_effects.html#comp_actionEffectRule/2">comp_actionEffectRule/2</a></td><td class="summary">Effect is a RDF description of a SWRL rule that describes how the effect of Action can be projected into the knowledge base.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="action_planning.html">action_planning.pl</a></span>&nbsp; -- Methods for reasoning about object changes caused by actions<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="action_planning.html#plan_constrained_objects/3">plan_constrained_objects/3</a></td><td class="summary">Link outputs of previous actions to <var>Action</var> via <code>objectActedOn</code> property based on the description of IO constraints.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_planning.html#plan_finish_action/1">plan_finish_action/1</a></td><td class="summary">Specify the endTime of ActionInstance and project its effects.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_planning.html#plan_objects/2">plan_objects/2</a></td><td class="summary">Read all objects mentioned in sub-actions of the imported plan.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_planning.html#plan_start_action/2">plan_start_action/2</a></td><td class="summary">ActionInstance is a newly created instance of type ActionClass.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_planning.html#plan_step/1">plan_step/1</a></td><td class="summary">Updates ongoing processes.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_planning.html#plan_subevents/2">plan_subevents/2</a></td><td class="summary">Read all sub-event classes of the imported plan, i.e.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="action_planning.html#plan_subevents_recursive/2">plan_subevents_recursive/2</a></td><td class="summary">Recursively read all sub-action classes of the imported plan, i.e.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="actions.html">actions.pl</a></span>&nbsp; -- Methods for reasoning about action descriptions<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="actions.html#action_fromLocation/2">action_fromLocation/2</a></td><td class="summary">Reads the fromLocation for a TBOX action description.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="actions.html#action_inputs/2">action_inputs/2</a></td><td class="summary">Required inputs for an action.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="actions.html#action_missing_inputs/2">action_missing_inputs/2</a></td><td class="summary">Missing inputs of an action (required, but not available).</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="actions.html#action_objectActedOn/2">action_objectActedOn/2</a></td><td class="summary">Reads the objectActedOn for a TBOX action description.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="actions.html#action_outputs/2">action_outputs/2</a></td><td class="summary">Outputs of an action.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="actions.html#action_toLocation/2">action_toLocation/2</a></td><td class="summary">Reads the toLocation for a TBOX action description.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="object_change.html">object_change.pl</a></span>&nbsp; -- Methods for reasoning about object changes caused by actions<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="object_change.html#comp_thermicallyConnectedTo/2">comp_thermicallyConnectedTo/2</a></td><td class="summary">Compute if a heat path exists between two objects.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="object_change.html#transformed_into/2">transformed_into/2</a></td><td class="summary">Compute which objects have been transformed into which other ones by actions or processes.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="object_change.html#transformed_into_transitive/2">transformed_into_transitive/2</a></td><td class="summary">Transitive version of the transformed_into predicate that tracks in- and outputs of actions over several steps and different properties.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

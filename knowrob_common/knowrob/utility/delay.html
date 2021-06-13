@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>delay.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>delay.pl</h1>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="univ/3"><b class="pred">univ</b><var class="arglist">(+Term, -Name, -Args)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><b class="pred">univ</b><var class="arglist">(-Term, +Name, +Args)</var> is <b class="det">det</b></dt><dd class="defbody">Just like is like <code>Term =.. [Name|Args]</code>. This predicate is exported
+to placate the cross-referencer. It's intended
+to be called as <code>delay(univ(T,N,As))</code>. Although it can be used as a
+normal goal, if wanted.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="delay/1"><b class="pred">delay</b><var class="arglist">(:Goal)</var></a></dt><dd class="defbody">Like <code>call(Goal)</code> but postpones execution until <var>Goal</var>'s arguments are
+bound enough to avoid errors like: "Arguments are not sufficiently
+instantiated". This is currently realized with attributed
+variables and <a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=when/2">when/2</a>, so execution timing is identical. For example,
+
+<pre class="code">
+t :-
+    delay(atom_codes(A,C)),
+    A = hello,
+    C == "hello".
+</pre>
+
+<p>
+does not throw an exception on the first line.
+One is simply declaring that <var>A</var> and <var>C</var> have a given relationship
+without stating when the predicate (<a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=atom_codes/2">atom_codes/2</a>) will
+execute. This declarative style is especially valuable when
+different modes of a predicate require different goal order.</p>
+
+<p>
+The following predicates are currently supported:</p>
+<ul>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=atom_codes/2">atom_codes/2</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=functor/3">functor/3</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=length/2">length/2</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=number_codes/2">number_codes/2</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=phrase/2">phrase/2</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=phrase/3">phrase/3</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=plus/3">plus/3</a></li>
+<li><a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=succ/2">succ/2</a></li>
+<li><a href="delay.html#univ/3">univ/3</a></li>
+</ul>
+
+<p>
+<code>delay(length(L,Len))</code> warrants additional explanation. <a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=length/2">length/2</a>
+doesn't throw instantiation exceptions. It simply iterates all
+possible lists and their respective lengths. This isn't always
+ideal. Using <a href="delay.html#delay/1">delay/1</a> with <a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=length/2">length/2</a> yields the same semantics but
+performs much less backtracking. It waits until either <var>L</var>
+or <var>Len</var> is bound then <a class="builtin" href="http://www.swi-prolog.org/pldoc/man?predicate=length/2">length/2</a> evaluates without any choicepoints.
+<var>L</var> must become a proper list to trigger, so incrementally binding
+its head is OK.</p></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="when_proper_list/2"><b class="pred">when_proper_list</b><var class="arglist">(List, Goal)</var></a></dt><dd class="defbody">Delay executing <var>Goal</var> until <var>List</var> becomes a proper list. This
+predicate is part of the internal implementation of <a href="delay.html#delay/1">delay/1</a> but it
+may be useful to others so it's exported.</dd>
+</dl>
+
+</body>
+</html>

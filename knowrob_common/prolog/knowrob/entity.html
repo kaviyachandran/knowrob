@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>entity.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>entity.pl -- Reasoning via partial descriptions of entities.</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="entity/2"><b class="pred">entity</b><var class="arglist">(?Entity, +Descr)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Query for entity matching an entity description or build
+description for entity.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Entity</var></td><td class="argdescr">- IRI of matching entity</td></tr>
+<tr><td><var>Descr</var></td><td class="argdescr">- An entity description, OWL individual or class IRI</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="entity_has/3"><b class="pred">entity_has</b><var class="arglist">(+Descr, +Key, Value)</var></a></dt><dd class="defbody">Read entity description value</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="entity_assert/2"><b class="pred">entity_assert</b><var class="arglist">(-Entity, +Descr)</var></a></dt><dd class="defbody">Assert entity description in RDF triple store as new individual.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Entity</var></td><td class="argdescr">- IRI of matching entity</td></tr>
+<tr><td><var>Descr</var></td><td class="argdescr">- An entity description</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="entity_retract/1"><b class="pred">entity_retract</b><var class="arglist">(+Entity)</var></a></dt><dd class="defbody">Assert entity description in RDF triple store as new individual.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Entity</var></td><td class="argdescr">- IRI of matching entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="with_owl_description/3"><b class="pred">with_owl_description</b><var class="arglist">(+Description, ?Individual, +Goal)</var></a></dt><dd class="defbody">Ensures entity description is asserted and binds the name to
+<var>Individual</var> before goal is called.
+Temporary assertions are retracted in a cleanup goal.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Description</var></td><td class="argdescr">- Entity description or individual</td></tr>
+<tr><td><var>Individual</var></td><td class="argdescr">- Entity individual
+<var>Goal</var> The goal with OWL entity asserted</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="entity_write/1"><b class="pred">entity_write</b><var class="arglist">(+Descr)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Write entity to current output stream.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Descr</var></td><td class="argdescr">- An entity description</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

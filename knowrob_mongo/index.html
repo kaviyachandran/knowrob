@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob_mongo</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="wiki">knowrob_mongo</h1>
+
+<p>
+This package implements a mongo client for KnowRob that transparently
+integrates logged data into the reasoning process.
+This is accomplished by symbolic data abstraction on demand
+given a reasoning task at hand.
+Abstracted symbols correspond to OWL properties in the <a href="http://knowrob.org/doc/knowrob_taxonomy">KnowRob ontology</a>
+(e.g., logged spatial information may be abstracted to some specific spatial relation on demand).</p>
+
+<p>
+Each DB collection corresponds to a ROS topic and is named accordingly,
+the records in collections are messages published on the topic
+and their structure is given by ROS message definitions.
+Using <a href="https://github.com/code-iai/ros-mongodb_log">mongodb-log</a>
+ROS messages can be recorded in advance or while KnowRob is running.
+ROS messages are usually stamped, and thus a timestamp value ends up
+in the DB records that should be used for indexing such that
+KnowRob can quickly find records given some time instant.</p>
+
+<p>
+As an example, consider the following DB layout
+which is based on the <a href="http://docs.ros.org/api/geometry_msgs/html/msg/PoseStamped.html">PoseStamped</a> message
+send via the communication topic <code>tf</code>:</p>
+
+<pre class="code">
+{"tf": {
+    "header": {
+        "seq":      "integer",
+        "stamp":    "time",
+        "frame_id": "string"
+    },
+    "pose": {
+        "position":    { "x": "double", "y": "double", "z": "double" },
+        "orientation": { "x": "double", "y": "double", "z": "double", "w": "double" }
+    }
+}}
+</pre>
+
+<p>
+In the layout, the name <code>tf</code> corresponds to a named collection in the DB that collects
+recorded PoseStamped messages send via the named topic <code>tf</code>.
+The collection should be indexed by the key `header.stamp` such that the mongo server
+can quickly filter out records based on the timestamp when they were acquired.
+<var>Note</var> in case of array values (as for tf) it is important
+that the indexed key has identical values for all array members (e.g., the same header stamp
+in case of tf) -- a patched <a href="https://github.com/code-iai/robot_state_publisher">robot state publisher</a>
+should be used for robot transforms to avoid this issue.</p>
+
+<p>
+KnowRob uses a state variable for database selection,
+only one database may be active at any time.
+Users may use <a href="mongo.html#mng_db/1">mng_db/1</a> to select the currently active database,
+the default database is named <b>roslog</b>.
+Note that database selection is not threadsafe at the moment (i.e., DB will be selected
+for all threads).</p>
+
+<h3 class="wiki">Querying DB objects</h3>
+
+<p>
+The main entry point for querying is <a href="mongo.html#mng_query/3">mng_query/3</a>.
+Its first argument is the name of the collection from which records
+should be retrieved (i.e., the topic name).
+The second argument is a compound term used to configure the amount
+of records to be queried (one, all, or some), and also binds
+the resulting DB objects to a Prolog variable.
+The last argument is a key-value pattern that must be fulfilled
+by matching DB objects.
+The keys must comply with the structure of the mongo collection.
+Nested objects can be retrieved by using multi-level keys separated with
+a dot (e.g., 'header.frame_id', or 'pose.position.x').
+Values are passed to the mongo server as is with the exception of
+terms <code>date(Date)</code> which are mapped to mongo date representation internally.</p>
+
+<p>
+Another useful predicate is <a href="mongo.html#mng_query_latest/4">mng_query_latest/4</a>
+that yields ordered records before some constant time instant (latest record first).
+For example, to read only the latest image published
+on the topic <code>kinect_head_rgb_image_color</code>, and before time <var>Instant</var>, one can write:</p>
+
+<pre class="code">
+mng_query_latest('kinect_head_rgb_image_color', one(DBObj), 'header.stamp', Instant).
+</pre>
+
+<p>
+Finally, <a href="mongo.html#mng_query_incremental/3">mng_query_incremental/3</a> allows to hook a Prolog goal into
+incrementally querying the mongo DB, and to allow integration of
+mongo query processing with Prolog
+backtracking.
+This goes along these lines:</p>
+
+<pre class="code">
+mng_query_incremental('tf', my_goal, [['header.frame_id', 'FRAME1']]).
+</pre>
+
+<p>
+Where my_goal is called for each resulting DB object. Incremental processing is aborted
+as soon as my_goal yields false.</p>
+
+<h3 class="wiki">Republishing messages</h3>
+
+<p>
+This package also implements a message factory that is able to generate
+ROS messages from DB records, and to republish them on a user specified topic.
+This can be done with the predicate <a href="mongo.html#mng_republish/5">mng_republish/5</a>
+for which users must specify DB object (queried before),
+message type specifiers, and the topic on which the message should
+be published.</p>
+
+<p>
+For example, camera info messages could be republished like this:</p>
+
+<pre class="code">
+mng_republish(DBObj, 'sensor_msgs.CameraInfo', 'sensor_msgs/CameraInfo', 'camera_info', Msg).
+</pre>
+
+<h2 class="wiki subdirs">Sub directories</h2>
+
+<table class="subdirs">
+<tr><td><a class="subdir" href="prolog/index.html">[dir] prolog</a></td></tr>
+</table>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+</table>
+
+</body>
+</html>

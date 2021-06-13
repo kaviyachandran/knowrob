@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vis.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>vis.pl -- Methods for visualizing parts of the knowledge base</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="show/0"><b class="pred">show</b></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="show/1"><b class="pred">show</b><var class="arglist">(+VisualThing)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="show/2"><b class="pred">show</b><var class="arglist">(+VisualThing, +Instant)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="show/3"><b class="pred">show</b><var class="arglist">(+VisualThing, +Instant, +Properties)</var></a> is <b class="det">det</b></dt><dd class="defbody"><var>VisualThing</var> is a thing with a visual interpretation
+and some way to generate a ROS visualization message for it.
+This includes marker_visualization messages and data_vis messages.
+<var>VisualThing</var> may be a RDF IRI of some OWL individual,
+a marker term (e.g., <code>object(Iri)</code>), or a data vis object (e.g., <code>timeline(Identifier)</code>).
+All existing markers are updated for the current timepoint if
+<var>VisualThing</var> is left unspecified.
+<var>Properties</var> is a list of properties passed to
+the respective submodules (i.e., marker or data visualization).
+If <var>VisualThing</var> is a list then each element is expected to be a term
+describing one visualization artifact.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="show_next/0"><b class="pred">show_next</b></a> is <b class="det">det</b></dt><dd class="defbody">Unhighlights objects and removes displayed trajectories.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="highlight/1"><b class="pred">highlight</b><var class="arglist">(+VisualThing)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="highlight/2"><b class="pred">highlight</b><var class="arglist">(+VisualThing, +Color)</var></a> is <b class="det">det</b></dt><dd class="defbody">Visually highlights <var>VisualThing</var> in the respective canvas.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="camera_pose/2"><b class="pred">camera_pose</b><var class="arglist">(+Position:list, +Orientation:list)</var></a> is <b class="det">det</b></dt><dd class="defbody">Sends a pose via the ROS topic <i>/camera/pose</i>.
+Visualization clients may choose to manipulate some 3D camera accordingly.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Position</var></td><td class="argdescr">- [float x,y,z]</td></tr>
+<tr><td><var>Orientation</var></td><td class="argdescr">- [float qx,qy,qz,qw]</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="visualisation_server/0"><b class="pred">visualisation_server</b></a> is <b class="det">det</b></dt><dd class="defbody">Launches a web server that runs a minimal visualization client.
+This implementation is able to handle most marker visualization messages,
+data visualization messages (among other features) are unsupported.
+A proper client is implemented in <a href="http://www.open-ease.org/">openEASE</a>.
+You can access the minimal client via <a href="http://localhost:1111">http://localhost:1111</a></dd>
+</dl>
+
+</body>
+</html>

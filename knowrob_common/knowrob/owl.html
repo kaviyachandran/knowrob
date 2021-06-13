@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>owl.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>owl.pl -- Utilities for handling OWL information in KnowRob.</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_compute_individual_of/2"><b class="pred">owl_compute_individual_of</b><var class="arglist">(?Resource, ?Description)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>Resource</var> satisfies <var>Description</var>
+according the the OWL-<var>Description</var> entailment rules,
+with additional computable semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Resource</var></td><td class="argdescr">- OWL resource identifier</td></tr>
+<tr><td><var>Description</var></td><td class="argdescr">- OWL class description</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_compute_has/3"><b class="pred">owl_compute_has</b><var class="arglist">(?Subject, ?Predicate, ?Object)</var></a></dt><dd class="defbody">True if this relation is specified, or can be deduced using OWL
+inference rules, or computable semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Subject</var></td><td class="argdescr">- OWL resource iri</td></tr>
+<tr><td><var>Predicate</var></td><td class="argdescr">- Property iri</td></tr>
+<tr><td><var>Object</var></td><td class="argdescr">- OWL resource iri or datatype value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_class_properties/3"><b class="pred">owl_class_properties</b><var class="arglist">(?Class, ?Prop, ?Val)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Collect all property values of someValuesFrom- and hasValue-restrictions of a class
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> whose restrictions are being considered</td></tr>
+<tr><td><var>Prop</var></td><td class="argdescr">- Property whose restrictions in <var>Class</var> are being considered</td></tr>
+<tr><td><var>Val</var></td><td class="argdescr">- Values that appear in a restriction of a superclass of <var>Class</var> on Property</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_class_properties_some/3"><b class="pred">owl_class_properties_some</b><var class="arglist">(?Class, ?Prop, ?Val)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Collect all property values of someValuesFrom-restrictions of a class
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> whose restrictions are being considered</td></tr>
+<tr><td><var>Prop</var></td><td class="argdescr">- Property whose restrictions in <var>Class</var> are being considered</td></tr>
+<tr><td><var>Val</var></td><td class="argdescr">- Values that appear in a restriction of a superclass of <var>Class</var> on Property</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_class_properties_all/3"><b class="pred">owl_class_properties_all</b><var class="arglist">(?Class, ?Prop, ?Val)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Collect all property values of allValuesFrom-restrictions of a class
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> whose restrictions are being considered</td></tr>
+<tr><td><var>Prop</var></td><td class="argdescr">- Property whose restrictions in <var>Class</var> are being considered</td></tr>
+<tr><td><var>Val</var></td><td class="argdescr">- Values that appear in a restriction of a superclass of <var>Class</var> on Property</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_class_properties_value/3"><b class="pred">owl_class_properties_value</b><var class="arglist">(?Class, ?Prop, ?Val)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Collect all property values of hasValue-restrictions of a class
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> whose restrictions are being considered</td></tr>
+<tr><td><var>Prop</var></td><td class="argdescr">- Property whose restrictions in <var>Class</var> are being considered</td></tr>
+<tr><td><var>Val</var></td><td class="argdescr">- Values that appear in a restriction of a superclass of <var>Class</var> on Property</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_class_properties_nosup/3"><b class="pred">owl_class_properties_nosup</b><var class="arglist">(?Class, ?Prop, ?Val)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Version of owl_class_properties without considering super classes
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> whose restrictions are being considered</td></tr>
+<tr><td><var>Prop</var></td><td class="argdescr">- Property whose restrictions in <var>Class</var> are being considered</td></tr>
+<tr><td><var>Val</var></td><td class="argdescr">- Values that appear in a restriction of a superclass of <var>Class</var> on Property</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_class_properties_transitive_nosup/3"><b class="pred">owl_class_properties_transitive_nosup</b><var class="arglist">(?Class, ?Prop, ?Val)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Transitive cersion of owl_class_properties without considering super classes
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> whose restrictions are being considered</td></tr>
+<tr><td><var>Prop</var></td><td class="argdescr">- Property whose restrictions in <var>Class</var> are being considered</td></tr>
+<tr><td><var>Val</var></td><td class="argdescr">- Values that appear in a restriction of a superclass of <var>Class</var> on Property</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_inspect/3"><b class="pred">owl_inspect</b><var class="arglist">(?Thing, ?P, ?O)</var></a></dt><dd class="defbody">Read information stored for <var>Thing</var>. Basically a wrapper around owl_has and
+owl_class_properties that aggregates their results. The normal use case is to
+have <var>Thing</var> bound and ask for all property/object pairs for this class or
+individual.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Thing</var></td><td class="argdescr">- RDF identifier, either an OWL class or an individual</td></tr>
+<tr><td><var>P</var></td><td class="argdescr">- OWL property identifier</td></tr>
+<tr><td><var>O</var></td><td class="argdescr">- OWL class, individual or literal value specified as property <var>P</var> of <var>Thing</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_write_readable/1"><b class="pred">owl_write_readable</b><var class="arglist">(+Resource)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Writes human readable description of <var>Resource</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Resource</var></td><td class="argdescr">- OWL resource</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_readable/2"><b class="pred">owl_readable</b><var class="arglist">(+Resource, -Readable)</var></a></dt><dd class="defbody">Utility predicate to convert RDF terms into a readable representation.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_instance_from_class/2"><b class="pred">owl_instance_from_class</b><var class="arglist">(+Class, -Instance)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_instance_from_class/3"><b class="pred">owl_instance_from_class</b><var class="arglist">(+Class, +ConfigDict, -Instance)</var></a> is <b class="det">det</b></dt><dd class="defbody">Asserts new instance <var>Instance</var> with rdf:type <var>Class</var>.</dd>
+</dl>
+
+</body>
+</html>

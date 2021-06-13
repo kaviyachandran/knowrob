@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>utility</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">utility</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="atoms.html">atoms.pl</a></span>&nbsp; -- Prolog/OWL utility predicates<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="atoms.html#atom_ensure_prefix/3">atom_ensure_prefix/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="atoms.html#atom_ensure_suffix/3">atom_ensure_suffix/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="atoms.html#atom_remove_prefix/3">atom_remove_prefix/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="atoms.html#camelcase/2">camelcase/2</a></td><td class="summary">For example, <code>camelcase(hello_world, 'HelloWorld')</code>.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="atoms.html#lower_camelcase/2">lower_camelcase/2</a></td><td class="summary">For example, <code>lower_camelcase(hello_world, helloWorld)</code>.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="atoms.html#lowercase/2">lowercase/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="delay.html">delay.pl</a></span><span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="delay.html#delay/1">delay/1</a></td><td class="summary">Like <code>call(Goal)</code> but postpones execution until Goal's arguments are bound enough to avoid errors like: "Arguments are not sufficiently instantiated".</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="delay.html#univ/3">univ/3</a></td><td class="summary">Just like is like <code>Term =.. [Name|Args]</code>.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="delay.html#when_proper_list/2">when_proper_list/2</a></td><td class="summary">Delay executing Goal until List becomes a proper list.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="filesystem.html">filesystem.pl</a></span>&nbsp; -- Filesystem utilities<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="filesystem.html#mkdir/1">mkdir/1</a></td><td class="summary">Create directory at Dir if it does not yet exist.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="filesystem.html#path_concat/3">path_concat/3</a></td><td class="summary">Concatenate path prefix with path suffix.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="filesystem.html#path_delimiter/1">path_delimiter/1</a></td><td class="summary">Delimiter for filesystem paths.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="filesystem.html#path_split/2">path_split/2</a></td><td class="summary">Splits Path at delimiter characters and unifies with splitted path elements PathList.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="plunit.html">plunit.pl</a></span>&nbsp; -- Unit Testing<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="plunit.html#begin_tests/1">begin_tests/1</a></td><td class="summary">Start a test-unit.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="plunit.html#run_tests/0">run_tests/0</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="plunit.html#end_tests/1">end_tests/1</a></td><td class="summary">Close a unit-test module.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="plunit.html#load_test_files/1">load_test_files/1</a></td><td class="summary">Load .plt test-files related to loaded source-files.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="plunit.html#running_tests/0">running_tests/0</a></td><td class="summary">Print the currently running test.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="plunit.html#set_test_options/1">set_test_options/1</a></td><td class="summary">Specifies how to deal with test suites.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="plunit.html#test_report/1">test_report/1</a></td><td class="summary">Produce reports on test results after the run.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>action_effects.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>action_effects.pl -- Prediction of action effects</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_actionEffectRule/2"><b class="pred">comp_actionEffectRule</b><var class="arglist">(+Action:iri, ?Effect:iri)</var></a></dt><dd class="defbody"><var>Effect</var> is a RDF description of a SWRL rule that
+describes how the effect of <var>Action</var> can be projected
+into the knowledge base.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- Instance of knowrob:<var>Action</var></td></tr>
+<tr><td><var>Effect</var></td><td class="argdescr">- RDF name of SWRL rule</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_effect_on_object/2"><b class="pred">action_effect_on_object</b><var class="arglist">(?ActionClass:iri, ?EffectTerm:term)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Reasoning about which <var>ActionClass</var> (when the action is successfully performed)
+will have a desired effect on the object manipulated during the action.
+<var>EffectTerm</var> is a Prolog term describing the effect:
+
+<table class="wiki">
+<tr><td><code>updated(P,O)</code></td><td>If value O is specified for property P</td></tr>
+<tr><td><code>created(Type)</code></td><td>If Type is a new type of the manipulated object</td></tr>
+<tr><td><code>destroyed(Type)</code></td><td>If Type is not a type of the manipulated object anymore after the action was performed</td></tr>
+<tr><td>destroyed</td><td>If the object is not spatially existing anymore</td></tr>
+</table>
+
+<p>
+<code>created</code> and <code>destroyed</code> effect terms follow the convention that type assertions
+are represented in rule heads as `Type(?obj)`, and type retractions as `(not Type)(?obj)`.</p>
+
+<p>
+For example:</p>
+
+<pre class="code" ext="">
+    action_effect_on_object(knowrob:'TurningOnPoweredDevice',
+           updated(knowrob:stateOfObject,knowrob:'DeviceStateOn'))
+    action_effect_on_object(knowrob:'BakingFood',
+           created(knowrob:'Baked'))
+    action_effect_on_object(knowrob:'Cracking',
+           destroyed)
+</pre>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_effects_apply/1"><b class="pred">action_effects_apply</b><var class="arglist">(+Act:iri)</var></a></dt><dd class="defbody">Apply all the effects that are known to apply if <var>Act</var> is performed successfully.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Act</var></td><td class="argdescr">- Instance of knowrob:'Action'</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_effect_apply/2"><b class="pred">action_effect_apply</b><var class="arglist">(+Act:iri, +Effect:iri)</var></a></dt><dd class="defbody"><var>Effect</var> is a RDF SWRL rule that expresses an effect of <var>Act</var>.
+The implications of the rule (i.e., the rule head) is
+projected to the RDF triple store with this call.
+
+<p>
+SWRL action effect rules have additional annotations used to
+reason about the context in which the rule applies (i.e., the action class).
+These rules usually start with a statement `Action(?act)` which assigns an action instance
+to the rule. The action instance <var>Act</var> provided will be bound to this action variable in the rule.</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Act</var></td><td class="argdescr">- Instance of knowrob:'Action'</td></tr>
+<tr><td><var>Effect</var></td><td class="argdescr">- RDF description of SWRL action effect rule</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_precondition_check/1"><b class="pred">action_precondition_check</b><var class="arglist">(+Act:iri)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="action_precondition_check/2"><b class="pred">action_precondition_check</b><var class="arglist">(+Act:iri, +Effect:iri)</var></a></dt><dd class="defbody">True if <var>Act</var> is an action without unsatisfied preconditions, or
+if <var>Effect</var> is a satisfied precondition of <var>Act</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Act</var></td><td class="argdescr">- Instance of knowrob:'Action'</td></tr>
+<tr><td><var>Effect</var></td><td class="argdescr">- RDF description of SWRL action effect rule</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

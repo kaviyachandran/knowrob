@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>comp_orgprinciples.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>comp_orgprinciples.pl -- Reasoning about organizational principles in household environments</h1>
+
+<p>
+This module contains all computables that compute the location where
+an object should be placed given other objects at different locations
+in the environment. Can also be used to infer where an object could
+probably be found, given earlier (outdated) observations of other
+objects in the environment. Uses the WUP similartiy from
+comp_similartiy module.</p>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Martin Schuster</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="best_location_maxMaxWup/2"><b class="pred">best_location_maxMaxWup</b><var class="arglist">(+Object, -BestLocation)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="best_location_maxMaxWup/3"><b class="pred">best_location_maxMaxWup</b><var class="arglist">(+Object, -BestLocation, -MaxMaxSim)</var></a></dt><dd class="defbody">Computes the best location where to place a certain object
+may give multiple possible solutions in case there is a tie
+
+<p>
+Example: <code>best_location_maxMaxWup(orgprinciples_demo:'Muesli_Schoko_1', L)</code>.</p>
+
+<p>
+Example: <code>best_location_maxMaxWup(knowrob:'Knife', L)</code>.</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Object</var></td><td class="argdescr">- <var>Object</var> or Class</td></tr>
+<tr><td><var>BestLocation</var></td><td class="argdescr">- according to max. maxWup similarity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="best_location_dtree/2"><b class="pred">best_location_dtree</b><var class="arglist">(+Object, -BestLocation)</var></a></dt><dd class="defbody">Computes the best location where to place a certain object
+
+<p>
+Example: <code>best_location_dtree(orgprinciples_demo:'Muesli_Schoko_1', L)</code>.</p>
+
+<p>
+Example: <code>best_location_dtree(knowrob:'Knife', L)</code>.</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Object</var></td><td class="argdescr">- <var>Object</var> or Class</td></tr>
+<tr><td><var>BestLocation</var></td><td class="argdescr">- according to Decision Trees, features are maxWup and avgWup similaritites.
+Uses the WEKA C4.5 Decision Tree (J48) classifier (unpruned, min. number of instances per leaf = 0)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="avg_similarity_object_location/4"><b class="pred">avg_similarity_object_location</b><var class="arglist">(:SimFct:predicate, +Class:rdf_class, +List:list, -Average:float)</var></a></dt><dd class="defbody">uses <var>SimFct</var> to compute the similarity between a class and a list of classes (=location)
+averages the similarities of all classes in the list
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>SimFct</var></td><td class="argdescr">- similarity function <var>SimFct</var>(+Class1, +Class2, -Similartiy)</td></tr>
+<tr><td><var>Class</var></td><td class="argdescr">- class to compute similiarities with location</td></tr>
+<tr><td><var>List</var></td><td class="argdescr">- list of classes that define the location</td></tr>
+<tr><td><var>Average</var></td><td class="argdescr">- similarity of <var>Class</var> with <var>List</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="max_similarity_object_location/4"><b class="pred">max_similarity_object_location</b><var class="arglist">(:SimFct:predicate, +Class:rdf_class, +List:list, -Average:float)</var></a></dt><dd class="defbody">uses <var>SimFct</var> to compute the similarity between a class and a list of classes (=location)
+takes the maximum similartiy of all classes in the list
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>SimFct</var></td><td class="argdescr">- similarity function <var>SimFct</var>(+Class1, +Class2, -Similartiy)</td></tr>
+<tr><td><var>Class</var></td><td class="argdescr">- class to compute similiarities with location</td></tr>
+<tr><td><var>List</var></td><td class="argdescr">- list of classes that define the location</td></tr>
+<tr><td><var>Average</var></td><td class="argdescr">- similarity of <var>Class</var> with <var>List</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

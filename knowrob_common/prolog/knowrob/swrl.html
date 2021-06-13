@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>swrl.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>swrl.pl -- Integration of SWRL rules into KnowRob</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_rule/2"><b class="pred">rdf_swrl_rule</b><var class="arglist">(?Descr, ?Term)</var></a></dt><dd class="defbody"><var>Term</var> is a structure that represents the RDF SWRL rule <var>Descr</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Descr</var></td><td class="argdescr">- The RDF description of a SWRL rule</td></tr>
+<tr><td><var>Term</var></td><td class="argdescr">- Prolog term representing a SWRL rule</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_atom/2"><b class="pred">rdf_swrl_atom</b><var class="arglist">(?Descr, ?Term)</var></a></dt><dd class="defbody"><var>Term</var> is a structure that represents the RDF SWRL rule atom <var>Descr</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Descr</var></td><td class="argdescr">- The RDF description of a SWRL atom</td></tr>
+<tr><td><var>Term</var></td><td class="argdescr">- Prolog term representing a SWRL atom</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_load/0"><b class="pred">rdf_swrl_load</b></a></dt><dd class="defbody">Asserts all enabled RDF SWRL rules in Prolog KB</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_load/1"><b class="pred">rdf_swrl_load</b><var class="arglist">(+Descr)</var></a></dt><dd class="defbody">Asserts RDF SWRL rule <var>Descr</var> in Prolog KB
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Descr</var></td><td class="argdescr">- RDF identifier of SWRl rule description, or the name of a rule.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_unload/0"><b class="pred">rdf_swrl_unload</b></a></dt><dd class="defbody">Retacts all previously loaded RDF SWRL rules from Prolog KB</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_unload/1"><b class="pred">rdf_swrl_unload</b><var class="arglist">(+Descr)</var></a></dt><dd class="defbody">Retacts the RDF SWRL rule <var>Descr</var> from Prolog KB
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Descr</var></td><td class="argdescr">- RDF identifier of SWRl rule description, or the name of a rule.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_project/1"><b class="pred">rdf_swrl_project</b><var class="arglist">(+Descr)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_project/2"><b class="pred">rdf_swrl_project</b><var class="arglist">(+Descr, +Vars_user)</var></a></dt><dd class="defbody">Project implication of named SWRL rule into the RDF triple store.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Descr</var></td><td class="argdescr">- RDF identifier of SWRl rule description, or the name of a rule.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_satisfied/1"><b class="pred">rdf_swrl_satisfied</b><var class="arglist">(+Descr)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_swrl_satisfied/2"><b class="pred">rdf_swrl_satisfied</b><var class="arglist">(+Descr, +Vars_user)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_assert/1"><b class="pred">swrl_assert</b><var class="arglist">(+Rule)</var></a></dt><dd class="defbody">Assert SWRL rule in the Prolog KB.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Rule</var></td><td class="argdescr">- Prolog-based representation of SWRL rule.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_satisfied/1"><b class="pred">swrl_satisfied</b><var class="arglist">(+Rule)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_satisfied/2"><b class="pred">swrl_satisfied</b><var class="arglist">(+Rule, +Vars_user)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_project/1"><b class="pred">swrl_project</b><var class="arglist">(+Rule)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_project/2"><b class="pred">swrl_project</b><var class="arglist">(+Rule, +Vars_user)</var></a></dt><dd class="defbody">Project implications of a SWRL rule into the RDF triple store.
+The rule is described by the individual <var>Descr</var> in the RDF triple store
+or by the SWRL term <var>Rule</var>
+Triples are not asserted to individuals directly but to their temporal parts.
+Negative atoms such as `(not Driver)(?x)` are projected to the temporal parts
+by specifying the end time of the corresponding time interval.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_phrase/2"><b class="pred">swrl_phrase</b><var class="arglist">(?Term, ?Expr)</var></a></dt><dd class="defbody"><var>Term</var> is is the parse tree of parsing the atom <var>Expr</var> as SWRL rule.
+Can be used to generate human readable syntax for Prolog SWRL terms,
+but also for generating Prolog term representation of human readable
+SWRL expression.
+
+<p>
+For example, <code>swrl_phrase(Term, 'Driver(?p) -&gt; Person(?p)')</code>
+parses the expression and generates the term:</p>
+
+<center>
+<var>Term</var> = [ <code>class(test_swrl:'Person',var(p))</code> ] :-
+[ <code>class(test_swrl:'Driver',var(p))</code> ]
+</center>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Term</var></td><td class="argdescr">- A Prolog term describing a SWRL rule</td></tr>
+<tr><td><var>Expr</var></td><td class="argdescr">- A SWRL describtion in human readable syntax</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="swrl_phrase_assert/1"><b class="pred">swrl_phrase_assert</b><var class="arglist">(?Phrase)</var></a></dt><dd class="defbody">Assert SWRL rule in human readable Syntax as native Prolog <code>rule(s)</code>.</dd>
+</dl>
+
+</body>
+</html>

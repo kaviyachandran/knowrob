@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>object_change.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>object_change.pl -- Methods for reasoning about object changes caused by actions</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="transformed_into/2"><b class="pred">transformed_into</b><var class="arglist">(?From:iri, ?To:iri)</var></a></dt><dd class="defbody">Compute which objects have been transformed into which other ones
+by actions or processes. This predicate operates on the object
+modification graph created by the action projection rules
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>From</var></td><td class="argdescr">- Input of some action</td></tr>
+<tr><td><var>To</var></td><td class="argdescr">- Output created by this action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="transformed_into_transitive/2"><b class="pred">transformed_into_transitive</b><var class="arglist">(?From:iri, ?To:iri)</var></a></dt><dd class="defbody">Transitive version of the transformed_into predicate that tracks
+in- and outputs of actions over several steps and different
+properties
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>From</var></td><td class="argdescr">- Input of some action</td></tr>
+<tr><td><var>To</var></td><td class="argdescr">- Output created by this action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_thermicallyConnectedTo/2"><b class="pred">comp_thermicallyConnectedTo</b><var class="arglist">(?Obj1:iri, ?Obj2:iri)</var></a></dt><dd class="defbody">Compute if a heat path exists between two objects. This is the case if
+they are either on top of each other or if one contains the other one
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj1</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>Obj2</var></td><td class="argdescr">- Object instance</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

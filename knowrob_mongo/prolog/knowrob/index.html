@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">knowrob</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="mongo.html">mongo.pl</a></span>&nbsp; -- Integration of mongo data into symbolic reasoning in KnowRob<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="mongo.html#mng_cursor_descending/3">mng_cursor_descending/3</a></td><td class="summary">Sorts the DB cursor In w.r.t.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_query_latest/4">mng_query_latest/4</a></td><td class="summary">Query for DB object in Collection.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_republish/3">mng_republish/3</a></td><td class="summary">Generate a ROS message based on Mongo DB object and publish the message on a specified topic.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_ros_message/2">mng_ros_message/2</a></td><td class="summary">Generate a ROS message based on Mongo DB object.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_cursor/3">mng_cursor/3</a></td><td class="summary">Create a DB cursor of query results for records in Collection.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_cursor_limit/3">mng_cursor_limit/3</a></td><td class="summary">Out is the same mongo DB cursor as In but limited to N results.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_cursor_process/2">mng_cursor_process/2</a></td><td class="summary">Incrementally compute DB objects from DBCursor, and call Goal for each result.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_cursor_read/2">mng_cursor_read/2</a></td><td class="summary">Read DB objects from cursor.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_cursor_read/2">mng_cursor_read/2</a></td><td class="summary">Read DB objects from cursor.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_db/1">mng_db/1</a></td><td class="summary">Change mongo database state used by KnowRob.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_distinct_values/3">mng_distinct_values/3</a></td><td class="summary">Determine distinct values of the records with Key in Collection.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_interface/1">mng_interface/1</a></td><td class="summary">Get handle to the java object of mongo client.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_query_incremental/3">mng_query_incremental/3</a></td><td class="summary">Incrementally compute DB objects matching Pattern, and call Goal for each result.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_republisher/1">mng_republisher/1</a></td><td class="summary">Get handle to the java object of mongo republisher.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_timestamp/2">mng_timestamp/2</a></td><td class="summary">Computes a timestamp that corresponds to the specified date.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo.html#mng_value_object/2">mng_value_object/2</a></td><td class="summary">Convert value to Java type compatible with MONGO queries.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="mongo_designators.html">mongo_designators.pl</a></span>&nbsp; -- Looking up designators in a mongo DB<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator/2">mng_designator/2</a></td><td class="summary">Read object that corresponds to Designator into a JAVA object DesigJava.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_interval/2">mng_designator_interval/2</a></td><td class="summary">True if Interval is the time interval during which Designator was the most recent representation of an entity.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_location/2">mng_designator_location/2</a></td><td class="summary">True if Pose is the location of Designator.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_object_type/2">mng_designator_object_type/2</a></td><td class="summary">Read the type of a logged designator by its ID.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_property/3">mng_designator_property/3</a></td><td class="summary">Read the properties of a logged designator by its ID.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_resolve/2">mng_designator_resolve/2</a></td><td class="summary">True if Entity is a valid representation for Designator.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_timestamp/2">mng_designator_timestamp/2</a></td><td class="summary">True if Instant is the time at which Designator was created.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_designators.html#mng_designator_type/2">mng_designator_type/2</a></td><td class="summary">True if Type is the type of Designator.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="mongo_images.html">mongo_images.pl</a></span>&nbsp; -- Looking up images in a mongo DB<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="mongo_images.html#mng_image_base64/2">mng_image_base64/2</a></td><td class="summary">Unifies Base64 with the base64 encoded atom that corresponds to the pixels of the uncomporessed image DB record DBObj.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_images.html#mng_image_base64_compresssed/2">mng_image_base64_compresssed/2</a></td><td class="summary">Unifies Base64 with the base64 encoded atom that corresponds to the pixels of the comporessed image DB record DBObj.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_images.html#mng_kinect_head_rgb_image_color/2">mng_kinect_head_rgb_image_color/2</a></td><td class="summary">Query for latest image message published on kinect_head_rgb_image_color topic before Instant and unify DBObj with the Java object that holds the image information.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="mongo_tf.html">mongo_tf.pl</a></span>&nbsp; -- Looking up tf transforms in a mongo DB<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="mongo_tf.html#mng_comp_pose/3">mng_comp_pose/3</a></td><td class="summary">Pose is an OWL individual of knowrob:'Pose' that represents logged tf data.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_tf.html#mng_lookup_transform/4">mng_lookup_transform/4</a></td><td class="summary">Determine the transform from Source to Target at time Instant based on the logged tf data.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="mongo_tf.html#mng_transform_pose/5">mng_transform_pose/5</a></td><td class="summary">Transform a pose into TargetFrame at time Instant.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

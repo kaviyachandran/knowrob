@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>actions.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>actions.pl -- Methods for reasoning about action descriptions</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="action_objectActedOn/2"><b class="pred">action_objectActedOn</b><var class="arglist">(?Action, ?Object)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Reads the objectActedOn for a TBOX action description
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class with a restriction on the objectActedOn</td></tr>
+<tr><td><var>Object</var></td><td class="argdescr">- Value set as objectActedOn for this action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_toLocation/2"><b class="pred">action_toLocation</b><var class="arglist">(?Action, ?Loc)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Reads the toLocation for a TBOX action description
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class with a restriction on the toLocation</td></tr>
+<tr><td><var>Loc</var></td><td class="argdescr">- Value set as toLocation for this action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_fromLocation/2"><b class="pred">action_fromLocation</b><var class="arglist">(?Action, ?Loc)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Reads the fromLocation for a TBOX action description
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class with a restriction on the fromLocation</td></tr>
+<tr><td><var>Loc</var></td><td class="argdescr">- Value set as fromLocation for this action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_inputs/2"><b class="pred">action_inputs</b><var class="arglist">(+Action, -Input)</var></a></dt><dd class="defbody">Required inputs for an action
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class</td></tr>
+<tr><td><var>Input</var></td><td class="argdescr">- <var>Input</var> linked via a preActors restriction</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_missing_inputs/2"><b class="pred">action_missing_inputs</b><var class="arglist">(+Action, -Missing)</var></a></dt><dd class="defbody"><var>Missing</var> inputs of an action (required, but not available)
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class</td></tr>
+<tr><td><var>Missing</var></td><td class="argdescr">- Input linked via a preActors restriction, but not available</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_outputs/2"><b class="pred">action_outputs</b><var class="arglist">(+Action, -Output)</var></a></dt><dd class="defbody">Outputs of an action
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class</td></tr>
+<tr><td><var>Output</var></td><td class="argdescr">- <var>Output</var> linked via a postActors restriction</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

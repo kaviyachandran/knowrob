@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>action_planning.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>action_planning.pl -- Methods for reasoning about object changes caused by actions</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_subevents/2"><b class="pred">plan_subevents</b><var class="arglist">(+Plan:iri, ?SubEvents:list)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Read all sub-event classes of the imported plan, i.e. single actions that need to be taken
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Plan</var></td><td class="argdescr">- <var>Plan</var> identifier</td></tr>
+<tr><td><var>SubEvents</var></td><td class="argdescr">- List of sub-events of the plan</td></tr>
+</table>
+
+</dd>
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- Unify with plan_subevents_recursive (return list or single instances)</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_subevents_recursive/2"><b class="pred">plan_subevents_recursive</b><var class="arglist">(+Plan:iri, ?SubEvents:list)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Recursively read all sub-action classes of the imported plan, i.e. single actions that need to be taken
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Plan</var></td><td class="argdescr">- <var>Plan</var> identifier</td></tr>
+<tr><td><var>SubEvents</var></td><td class="argdescr">- Sub-events of the plan</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_constrained_objects/3"><b class="pred">plan_constrained_objects</b><var class="arglist">(+Plan:iri, +Action:iri, +PrevActions:list)</var></a></dt><dd class="defbody">Link outputs of previous actions to <var>Action</var> via <code>objectActedOn</code> property
+based on the description of IO constraints.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Plan</var></td><td class="argdescr">- <var>Plan</var> identifier</td></tr>
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> identifier</td></tr>
+<tr><td><var>PrevActions</var></td><td class="argdescr">- List of previous actions performed within the plan</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_objects/2"><b class="pred">plan_objects</b><var class="arglist">(+Plan:iri, -Objects:list)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Read all objects mentioned in sub-actions of the imported plan
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Plan</var></td><td class="argdescr">- <var>Plan</var> identifier</td></tr>
+<tr><td><var>SubEvents</var></td><td class="argdescr">- List of objects of the plan</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_start_action/2"><b class="pred">plan_start_action</b><var class="arglist">(+ActionClass:iri, -ActionInstance:iri)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"><var>ActionInstance</var> is a newly created instance of type <var>ActionClass</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionClass</var></td><td class="argdescr">- Some sublcass of knowrob:'Action'</td></tr>
+<tr><td><var>ActionInstance</var></td><td class="argdescr">- Instance of <var>ActionClass</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_finish_action/1"><b class="pred">plan_finish_action</b><var class="arglist">(+ActionInstance:iri)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Specify the endTime of <var>ActionInstance</var> and project its effects.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionInstance</var></td><td class="argdescr">- Instance of ActionClass</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="plan_step/1"><b class="pred">plan_step</b><var class="arglist">(-Now:float)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Updates ongoing processes.</dd>
+</dl>
+
+</body>
+</html>

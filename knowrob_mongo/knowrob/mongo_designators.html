@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mongo_designators.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>mongo_designators.pl -- Looking up designators in a mongo DB</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator/2"><b class="pred">mng_designator</b><var class="arglist">(+Designator, -DesigJava)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Read object that corresponds to <var>Designator</var> into
+a JAVA object <var>DesigJava</var>.
+<var>Designator</var> is either a java mongo DB object,
+or an OWL individual of type knowrob:'<var>Designator</var>'.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- The designator DB object or OWL individual</td></tr>
+<tr><td><var>DesigJava</var></td><td class="argdescr">- Java designator object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_type/2"><b class="pred">mng_designator_type</b><var class="arglist">(+Designator, ?Type)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">True if <var>Type</var> is the type of <var>Designator</var>.
+This is usually "object", "action", or "location".
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Type</var></td><td class="argdescr">- <var>Type</var> of the designator</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_timestamp/2"><b class="pred">mng_designator_timestamp</b><var class="arglist">(+Designator, ?Instant)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">True if <var>Instant</var> is the time at which <var>Designator</var> was created.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- Floating point value representing the time</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_interval/2"><b class="pred">mng_designator_interval</b><var class="arglist">(+Designator, ?Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>Interval</var> is the time interval during which <var>Designator</var>
+was the most recent representation of an entity.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Interval</var></td><td class="argdescr">- [float begin, end] or [float begin]</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_location/2"><b class="pred">mng_designator_location</b><var class="arglist">(+Designator, ?Pose)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">True if <var>Pose</var> is the location of <var>Designator</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Pose</var></td><td class="argdescr">- The location pose in form of pose([x,y,z],[float qx,qy,qz,qw])</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_object_type/2"><b class="pred">mng_designator_object_type</b><var class="arglist">(+Designator, ?Type)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the type of a logged designator by its ID
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Type</var></td><td class="argdescr">- The type of the object that corresponds to <var>Designator</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_property/3"><b class="pred">mng_designator_property</b><var class="arglist">(+Designator, ?Key, ?Value)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the properties of a logged designator by its ID
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Key</var></td><td class="argdescr">- List of property keys for nested designators</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_designator_resolve/2"><b class="pred">mng_designator_resolve</b><var class="arglist">(+Designator, ?Entity)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>Entity</var> is a valid representation for <var>Designator</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Designator</var></td><td class="argdescr">- Java designator object or OWL individual of knowrob:<var>Designator</var></td></tr>
+<tr><td><var>Entity</var></td><td class="argdescr">- OWL indiviudal that represents the designator</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

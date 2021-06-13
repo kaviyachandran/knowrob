@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>owl_export.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>owl_export.pl -- Methods for exporting triples into OWL files</h1>
+
+<p>
+This module contains methods for exporting triples into OWL files,
+for instance object definitions, environment maps, or task specifications.</p>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth, Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="export_object/2"><b class="pred">export_object</b><var class="arglist">(+Obj, -File)</var></a></dt><dd class="defbody">Export the perception of an object to an OWL file.
+Not-existing directories will be created.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- Object instance to be exported (including the perception instances)</td></tr>
+<tr><td><var>File</var></td><td class="argdescr">- Filename for the exported OWL file</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="export_object_class/2"><b class="pred">export_object_class</b><var class="arglist">(+Obj, -File)</var></a></dt><dd class="defbody">Export the definition of an object class to an OWL file.
+Not-existing directories will be created.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- Object class to be exported</td></tr>
+<tr><td><var>File</var></td><td class="argdescr">- Filename for the exported OWL file</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="export_map/2"><b class="pred">export_map</b><var class="arglist">(+Map, -File)</var></a></dt><dd class="defbody">Export the map as the set of all perceptions of objects to an OWL file.
+Not-existing directories will be created.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Map</var></td><td class="argdescr">- <var>Map</var> instance to be exported (including the perception instances for all objects)</td></tr>
+<tr><td><var>File</var></td><td class="argdescr">- Filename for the exported OWL file</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="export_action/2"><b class="pred">export_action</b><var class="arglist">(+Action, -File)</var></a></dt><dd class="defbody">Export an action specification (TBOX) to an OWL file.
+Not-existing directories will be created.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> specification to be exported</td></tr>
+<tr><td><var>File</var></td><td class="argdescr">- Filename for the exported OWL file</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+<h2 class="undoc">Undocumented predicates</h2>
+
+<p>
+The following predicates are exported, but not or incorrectly documented.</p>
+
+<dl class="undoc">
+<dt class="undoc"><span style="float:right"></span><a name="export_abox/2"><b class="pred">export_abox</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="export_abox/1"><b class="pred">export_abox</b><var class="arglist">(Arg1)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="export_tbox/1"><b class="pred">export_tbox</b><var class="arglist">(Arg1)</var></a></dt>
+</dl>
+
+</body>
+</html>

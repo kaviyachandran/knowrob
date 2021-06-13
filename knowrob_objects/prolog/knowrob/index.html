@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">knowrob</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="beliefstate.html">beliefstate.pl</a></span>&nbsp; -- Maintaining symbolic beliefs about perceived objects.<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_at/2">belief_at/2</a></td><td class="summary">True if Transform is the active transform of Obj at time Instant (or the current time).</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_at_global/2">belief_at_global/2</a></td><td class="summary">True if GlobalPose is the pose of Obj expressed in global coordinates at time Instant (or the current time).</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_at_relative_to/3">belief_at_relative_to/3</a></td><td class="summary">Computes the pose of Child expressed using Parent as the frame of reference.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_at_update/2">belief_at_update/2</a></td><td class="summary">From now on belief that Obj is located at Transform.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_at_internal/3">belief_at_internal/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_existing_object_at/4">belief_existing_object_at/4</a></td><td class="summary">Checks whether one of the already known objects of ObjType is located close to Transform.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_existing_objects/1">belief_existing_objects/1</a></td><td class="summary">Returns a list of perceived objects that are known to the KB.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_forget/0">belief_forget/0</a></td><td class="summary">Retracts all facts asserted to the "belief_state" RDF graph.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_new_object/2">belief_new_object/2</a></td><td class="summary">Asserts a new object to the "belief_state" RDF graph.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_perceived_at/4">belief_perceived_at/4</a></td><td class="summary">Convenience predicate that first tries to find some existing object Obj at the pose Transform and if this fails asserts a new object at that pose.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="beliefstate.html#belief_republish_objects/1">belief_republish_objects/1</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="objects.html">objects.pl</a></span>&nbsp; -- Utilities for reasoning about objects<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="objects.html#comp_tf_pose/2">comp_tf_pose/2</a></td><td class="summary">Computes the pose of Obj using a ROS TF transform client.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#comp_depthOfObject/2">comp_depthOfObject/2</a></td><td class="summary">Computes the depth of Obj from its bounding box.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#comp_heightOfObject/2">comp_heightOfObject/2</a></td><td class="summary">Computes the height of Obj from its bounding box.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#comp_widthOfObject/2">comp_widthOfObject/2</a></td><td class="summary">Computes the width of Obj from its bounding box.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#current_object_pose/2">current_object_pose/2</a></td><td class="summary">Get the current pose of an object.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_assert_color/2">object_assert_color/2</a></td><td class="summary">Assert object main color property.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_assert_dimensions/4">object_assert_dimensions/4</a></td><td class="summary">Assert object dimension properties.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_color/2">object_color/2</a></td><td class="summary">True if Col is the main color of Obj.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_dimensions/4">object_dimensions/4</a></td><td class="summary">True if Depth x Width x Height are (exactly) the extends of the bounding box of Obj.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_distance/3">object_distance/3</a></td><td class="summary">Computes euclidean distance between A and B.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_frame_name/2">object_frame_name/2</a></td><td class="summary">True if FrameName is the name of origin frame of the object.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_mesh_path/2">object_mesh_path/2</a></td><td class="summary">True if FilePath is a path to a mesh file (stl or dae) for Obj.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_pose_at_time/3">object_pose_at_time/3</a></td><td class="summary">True if Pose is the pose of Obj at time Instant.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_queries/2">object_queries/2</a></td><td class="summary">Gather facts about queries that can be asked about an object.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_query/4">object_query/4</a></td><td class="summary">True for objects Obj for which a query exists belonging to the group QueryGroup and labeled with QueryTitle.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#object_trajectory/4">object_trajectory/4</a></td><td class="summary">Sample trajectory of Obj's origin frame within Interval.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#storagePlaceFor/2">storagePlaceFor/2</a></td><td class="summary">Computes the nominal storage location of an object based on assertions for typePrimaryFunction-containerFor for any of its superclasses.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="objects.html#storagePlaceForBecause/3">storagePlaceForBecause/3</a></td><td class="summary">Computes the nominal storage location of an object based on assertions for typePrimaryFunction-containerFor for any of its superclasses.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="perception.html">perception.pl</a></span>&nbsp; -- Asserting and reasoning about perception events.<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="perception.html#comp_detected_pose/2">comp_detected_pose/2</a></td><td class="summary">Computes the pose of Obj based on perception events and where they occured.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#create_visual_perception/1">create_visual_perception/1</a></td><td class="summary">Creates a new OWL individual of knowrob:VisualPerception and assigns its start time to the current time.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#create_joint_information/9">create_joint_information/9</a></td><td class="summary">Create a joint of class Type at pose Pose, linking Parent and Child Qmin and Qmax are joint limits as used in the ROS articulation stack.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#delete_joint_information/1">delete_joint_information/1</a></td><td class="summary">Remove joint instance and all information stored about this joint.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#object_detection/3">object_detection/3</a></td><td class="summary">Find all detections of the Object that are valid at time point Time.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#perception_set_object/2">perception_set_object/2</a></td><td class="summary">Link the object instance to the perception instance.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#perception_set_pose/2">perception_set_pose/2</a></td><td class="summary">Set the pose of an object perception to the value given as PoseList.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#read_joint_information/9">read_joint_information/9</a></td><td class="summary">Read information stored about a particular joint.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="perception.html#update_joint_information/7">update_joint_information/7</a></td><td class="summary">Update type, pose and articulation information for a joint after creation.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

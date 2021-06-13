@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>marker_vis.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>marker_vis.pl -- Integration RViz marker visualization messages</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_publish/0"><b class="pred">marker_publish</b></a> is <b class="det">det</b></dt><dd class="defbody">Publish all queued messages on the ROS /marker_visualisation topic
+and remove them from queue.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_republish/0"><b class="pred">marker_republish</b></a> is <b class="det">det</b></dt><dd class="defbody">(Re)-publish all known marker messages on the ROS /marker_visualisation topic.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_object/4"><b class="pred">marker_object</b><var class="arglist">(?Name, ?Object, ?Parent, ?Term)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_object/3"><b class="pred">marker_object</b><var class="arglist">(?Name, ?Object, ?Parent)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_object/2"><b class="pred">marker_object</b><var class="arglist">(?Name, ?Object)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Maps marker identification term to MarkerObject instance.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Name</var></td><td class="argdescr">- The marker identification term</td></tr>
+<tr><td><var>Object</var></td><td class="argdescr">- The MarkerObject instance</td></tr>
+<tr><td><var>Parent</var></td><td class="argdescr">- The MarkerObject parent instance</td></tr>
+<tr><td><var>Term</var></td><td class="argdescr">- The marker identification term</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_primitive/5"><b class="pred">marker_primitive</b><var class="arglist">(+Type, +MarkerName, +MarkerTerm, -MarkerObject, +Parent)</var></a> is <b class="det">det</b></dt><dd class="defbody">Creates <var>MarkerObject</var> instance with primitive geometry shape (e.g., cube, sphere, ...)
+and some default properties.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Type</var></td><td class="argdescr">- The shape primitive type (defined by <a class="extmanual" href="http://www.swi-prolog.org/pldoc/man?predicate=marker_prop_type/2">marker_prop_type/2</a>)</td></tr>
+<tr><td><var>MarkerName</var></td><td class="argdescr">- A atom that identifies the new marker (e.g., 'PR2')</td></tr>
+<tr><td><var>MarkerTerm</var></td><td class="argdescr">- A term that identifies the new marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>MarkerObject</var></td><td class="argdescr">- The <var>MarkerObject</var> object created</td></tr>
+<tr><td><var>Parent</var></td><td class="argdescr">- The parent Java object (i.e., MarkerPublisher or <var>MarkerObject</var> instance)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_remove/1"><b class="pred">marker_remove</b><var class="arglist">(+MarkerTerm)</var></a> is <b class="det">det</b></dt><dd class="defbody">Removes MarkerObject instances that match given term.
+<code>marker_remove(all)</code> removes all known markers.
+<code>marker_remove(trajectories)</code> removes all known trajectory markers.
+<code>marker_remove(MarkerTerm)</code> removes all markers that can be unified with
+the compound term <var>MarkerTerm</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerTerm</var></td><td class="argdescr">- Marker identification term.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_child/2"><b class="pred">marker_child</b><var class="arglist">(+MarkerTerm, ?MarkerChildTerm)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Query the children markers of the marker identified by <var>MarkerTerm</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerTerm</var></td><td class="argdescr">- A term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>MarkerChildTerm</var></td><td class="argdescr">- A term that identifies the marker child</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker/2"><b class="pred">marker</b><var class="arglist">(?MarkerTerm, ?MarkerObject)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker/3"><b class="pred">marker</b><var class="arglist">(?MarkerTerm, ?MarkerObject, ?Markername)</var></a> is <b class="det">det</b></dt><dd class="defbody">Selects <var>MarkerObject</var> instance that corresponds to <var>MarkerTerm</var>.
+Possibly creates a new <var>MarkerObject</var> if <var>MarkerTerm</var> is unknown.
+The MarkerPublisher instance is automatically selected as parent
+if the marker object is newly created with this call.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerTerm</var></td><td class="argdescr">- A term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>MarkerObject</var></td><td class="argdescr">- The <var>MarkerObject</var> instance</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_hide/1"><b class="pred">marker_hide</b><var class="arglist">(+Marker)</var></a> is <b class="det">det</b></dt><dd class="defbody">Hides marker if it was shown before.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- A marker object / name / update term.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_show/1"><b class="pred">marker_show</b><var class="arglist">(+Marker)</var></a> is <b class="det">det</b></dt><dd class="defbody">Shows marker again if it was hidden before.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- A marker object / name / update term.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_update/0"><b class="pred">marker_update</b></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_update/1"><b class="pred">marker_update</b><var class="arglist">(+T)</var></a> is <b class="det">det</b></dt><dd class="defbody">Updates all markers for the current local time or the time instant <var>T</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>T</var></td><td class="argdescr">- A time atom (e.g., 'timepoint_1396512604'), time number (e.g., 1396512604).</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_update/1"><b class="pred">marker_update</b><var class="arglist">(+MarkerTerm)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_update/2"><b class="pred">marker_update</b><var class="arglist">(+MarkerTerm, +T)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_update/3"><b class="pred">marker_update</b><var class="arglist">(+MarkerTerm, +MarkerObject, +T)</var></a> is <b class="det">det</b></dt><dd class="defbody">Updates the marker identified by <var>MarkerTerm</var>
+for the time instant <var>T</var> (or the current time).
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerTerm</var></td><td class="argdescr">- A term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>MarkerObject</var></td><td class="argdescr">- The <var>MarkerObject</var> instance</td></tr>
+<tr><td><var>T</var></td><td class="argdescr">- A time atom (e.g., 'timepoint_1396512604'), time number (e.g., 1396512604) or an interval (e.g., interval(1396512604, 1396512608[, 0.5])).</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_highlight/1"><b class="pred">marker_highlight</b><var class="arglist">(+MarkerObject)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_highlight/2"><b class="pred">marker_highlight</b><var class="arglist">(+MarkerObject, +Color)</var></a> is <b class="det">det</b></dt><dd class="defbody">Highlight markers identified by <var>MarkerObject</var> with given highlight color <var>Color</var>
+or the default color.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerObject</var></td><td class="argdescr">- <var>MarkerObject</var> instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Color</var></td><td class="argdescr">- 3D/4D number list or HTML color atom (e.g., '#ff0000')</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_highlight_remove/1"><b class="pred">marker_highlight_remove</b><var class="arglist">(+MarkerObject)</var></a> is <b class="det">det</b></dt><dd class="defbody">Removes highlights from markers identified by <var>MarkerObject</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerObject</var></td><td class="argdescr">- <var>MarkerObject</var> instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_highlight_toggle/1"><b class="pred">marker_highlight_toggle</b><var class="arglist">(+MarkerName)</var></a> is <b class="det">det</b></dt><dd class="defbody">Toggles marker highlighted state.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>MarkerObject</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_queries/2"><b class="pred">marker_queries</b><var class="arglist">(+MarkerName, ?Queries)</var></a></dt><dd class="defbody">Find all query representations that can be asked about this marker.
+These are queries described in an OWL ontology that can be asked about particular
+classes or individuals.
+<var>Queries</var> is a list of [atom Category,Title,Query].</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_properties/2"><b class="pred">marker_properties</b><var class="arglist">(+Marker, Props)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set marker properties.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Props</var></td><td class="argdescr">- List of properties (e.g., [<code>type(T)</code>|Tail])</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_type/2"><b class="pred">marker_type</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the type property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_scale/2"><b class="pred">marker_scale</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the scale property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_color/2"><b class="pred">marker_color</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the color property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_mesh_resource/2"><b class="pred">marker_mesh_resource</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the mesh_resource property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_points/2"><b class="pred">marker_points</b><var class="arglist">(+Marker, ?Points)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_colors/2"><b class="pred">marker_colors</b><var class="arglist">(+Marker, ?Colors)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_pose/2"><b class="pred">marker_pose</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the pose property of marker <var>Marker</var>.
+@<var>Value</var> must be unifyable with <code>pose(Position,Orientation)</code>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_translation/2"><b class="pred">marker_translation</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the translation property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_tf_prefix/2"><b class="pred">marker_tf_prefix</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the TF prefix property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_text/2"><b class="pred">marker_text</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the text property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="marker_has_visual/2"><b class="pred">marker_has_visual</b><var class="arglist">(+Marker, ?Value)</var></a> is <b class="det">det</b></dt><dd class="defbody">Read or set the has_visual property of marker <var>Marker</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Marker</var></td><td class="argdescr">- MarkerObject instance or a term that identifies the marker (e.g., <code>trajectory('/base_link')</code>)</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- The property value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

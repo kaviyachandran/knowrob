@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>tfjava.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>tfjava.pl -- Prolog-predicates as wrappers around tfjava</h1>
+
+<p>
+Provides an interface to the tf system from within Prolog, allowing
+to transform coordinates and to lookup transformations.</p>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Sjoerd van den Dries</dd><dd class="keyword-author">- Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="tfjava_start_listener/0"><b class="pred">tfjava_start_listener</b></a> is <b class="det">det</b></dt><dd class="defbody">Starts the tf listener, which runs in a separate thread.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="tfjava_lookup_transform/4"><b class="pred">tfjava_lookup_transform</b><var class="arglist">(+TargetFrame, +SourceFrame, -Pose, +Instant)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Lookup transform of <var>SourceFrame</var> relative to <var>TargetFrame</var> at time <var>Instant</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>TargetFrame</var></td><td class="argdescr">- Tf frame the source matrix is to be transformed into</td></tr>
+<tr><td><var>SourceFrame</var></td><td class="argdescr">- Tf frame the source matrix is described in</td></tr>
+<tr><td><var>Pose</var></td><td class="argdescr">- Term of form pose([float x,y,z],[float qx,qy,qz,qw])</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- Time point at which the transformation is to be determined</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="tfjava_transform_point/5"><b class="pred">tfjava_transform_point</b><var class="arglist">(+SourceFrame, +TargetFrame, +PointIn, -PointOut, -Instant)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Transform a point into <var>TargetFrame</var> at time <var>Instant</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>SourceFrame</var></td><td class="argdescr">- Tf frame the source matrix is described in</td></tr>
+<tr><td><var>TargetFrame</var></td><td class="argdescr">- Tf frame the source matrix is to be transformed into</td></tr>
+<tr><td><var>PointIn</var></td><td class="argdescr">- List of form [float x,y,z]</td></tr>
+<tr><td><var>PointOut</var></td><td class="argdescr">- List of form [float x,y,z]</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- Time point at which the transformation is to be determined</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="tfjava_transform_pose/5"><b class="pred">tfjava_transform_pose</b><var class="arglist">(+SourceFrame, +TargetFrame, +PoseIn, -PoseOut, -Instant)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Transform a pose into <var>TargetFrame</var> at time <var>Instant</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>SourceFrame</var></td><td class="argdescr">- Tf frame the source matrix is described in</td></tr>
+<tr><td><var>TargetFrame</var></td><td class="argdescr">- Tf frame the source matrix is to be transformed into</td></tr>
+<tr><td><var>PoseIn</var></td><td class="argdescr">- Term of form pose([float x,y,z],[float qx,qy,qz,qw])</td></tr>
+<tr><td><var>PoseOut</var></td><td class="argdescr">- Term of form pose([float x,y,z],[float qx,qy,qz,qw])</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- Time point at which the transformation is to be determined</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

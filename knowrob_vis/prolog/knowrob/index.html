@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">knowrob</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="data_vis.html">data_vis.pl</a></span>&nbsp; -- Methods for data visualization<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="data_vis.html#data_vis/2">data_vis/2</a></td><td class="summary">Creates a new data_vis message and publishes it via <i>/data_vis_msgs</i> ROS topic.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="data_vis.html#data_vis_remove/1">data_vis_remove/1</a></td><td class="summary">Republishes a data_vis object with empty data so that visualization clients can remove it.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="data_vis.html#timeline/1">timeline/1</a></td><td class="summary">Creates a new data_vis timeline message and publishes it via <i>/data_vis_msgs</i> ROS topic.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="marker_vis.html">marker_vis.pl</a></span>&nbsp; -- Integration RViz marker visualization messages<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="marker_vis.html#marker/2">marker/2</a></td><td class="summary">Selects MarkerObject instance that corresponds to MarkerTerm.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_highlight/1">marker_highlight/1</a></td><td class="summary">Highlight markers identified by MarkerObject with given highlight color Color or the default color.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_object/4">marker_object/4</a></td><td class="summary">Maps marker identification term to MarkerObject instance.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_update/0">marker_update/0</a></td><td class="summary">Updates all markers for the current local time or the time instant T.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_update/1">marker_update/1</a></td><td class="summary">Updates the marker identified by MarkerTerm for the time instant T (or the current time).</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_child/2">marker_child/2</a></td><td class="summary">Query the children markers of the marker identified by MarkerTerm.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_color/2">marker_color/2</a></td><td class="summary">Read or set the color property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_colors/2">marker_colors/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_has_visual/2">marker_has_visual/2</a></td><td class="summary">Read or set the has_visual property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_hide/1">marker_hide/1</a></td><td class="summary">Hides marker if it was shown before.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_highlight_remove/1">marker_highlight_remove/1</a></td><td class="summary">Removes highlights from markers identified by MarkerObject.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_highlight_toggle/1">marker_highlight_toggle/1</a></td><td class="summary">Toggles marker highlighted state.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_mesh_resource/2">marker_mesh_resource/2</a></td><td class="summary">Read or set the mesh_resource property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_points/2">marker_points/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_pose/2">marker_pose/2</a></td><td class="summary">Read or set the pose property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_primitive/5">marker_primitive/5</a></td><td class="summary">Creates MarkerObject instance with primitive geometry shape (e.g., cube, sphere, ...) and some default properties.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_properties/2">marker_properties/2</a></td><td class="summary">Read or set marker properties.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_publish/0">marker_publish/0</a></td><td class="summary">Publish all queued messages on the ROS /marker_visualisation topic and remove them from queue.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_queries/2">marker_queries/2</a></td><td class="summary">Find all query representations that can be asked about this marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_remove/1">marker_remove/1</a></td><td class="summary">Removes MarkerObject instances that match given term.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_republish/0">marker_republish/0</a></td><td class="summary">(Re)-publish all known marker messages on the ROS /marker_visualisation topic.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_scale/2">marker_scale/2</a></td><td class="summary">Read or set the scale property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_show/1">marker_show/1</a></td><td class="summary">Shows marker again if it was hidden before.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_text/2">marker_text/2</a></td><td class="summary">Read or set the text property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_tf_prefix/2">marker_tf_prefix/2</a></td><td class="summary">Read or set the TF prefix property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_translation/2">marker_translation/2</a></td><td class="summary">Read or set the translation property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="marker_vis.html#marker_type/2">marker_type/2</a></td><td class="summary">Read or set the type property of marker Marker.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="vis.html">vis.pl</a></span>&nbsp; -- Methods for visualizing parts of the knowledge base<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="vis.html#highlight/1">highlight/1</a></td><td class="summary">Visually highlights VisualThing in the respective canvas.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="vis.html#show/0">show/0</a></td><td class="summary">VisualThing is a thing with a visual interpretation and some way to generate a ROS visualization message for it.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="vis.html#camera_pose/2">camera_pose/2</a></td><td class="summary">Sends a pose via the ROS topic <i>/camera/pose</i>.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="vis.html#show_next/0">show_next/0</a></td><td class="summary">Unhighlights objects and removes displayed trajectories.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="vis.html#visualisation_server/0">visualisation_server/0</a></td><td class="summary">Launches a web server that runs a minimal visualization client.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

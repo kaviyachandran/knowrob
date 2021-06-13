@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>beliefstate.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>beliefstate.pl -- Maintaining symbolic beliefs about perceived objects.</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_existing_objects/1"><b class="pred">belief_existing_objects</b><var class="arglist">(-ObjectIds:list)</var></a> is <b class="det">det</b></dt><dd class="defbody">Returns a list of perceived objects that are known to the KB.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ObjectIds</var></td><td class="argdescr">- the object names</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_forget/0"><b class="pred">belief_forget</b></a> is <b class="det">det</b></dt><dd class="defbody">Retracts all facts asserted to the "belief_state" RDF graph.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_new_object/2"><b class="pred">belief_new_object</b><var class="arglist">(+ObjType:iri, -Obj:iri)</var></a> is <b class="det">det</b></dt><dd class="defbody">Asserts a new object to the "belief_state" RDF graph.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ObjType</var></td><td class="argdescr">- the type of the new object</td></tr>
+<tr><td><var>Obj</var></td><td class="argdescr">- the object asserted</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_existing_object_at/4"><b class="pred">belief_existing_object_at</b><var class="arglist">(+ObjType:iri, +Transform:list, +Threshold:float, -Obj:iri)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Checks whether one of the already known objects of <var>ObjType</var> is located close to <var>Transform</var>.
+The check uses <var>Threshold</var> as a threshold for comparing translation distance.
+
+<p>
+<var>Transform</var> is expected to be of the form [atom reference_frame, atom target_frame, [float x, y, z], [float x, y, z, w]]</p>
+
+<p>
+If such an object is found, its id is returned via ObjectId.</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ObjType</var></td><td class="argdescr">- the object type</td></tr>
+<tr><td><var>Transform</var></td><td class="argdescr">- the transform data</td></tr>
+<tr><td><var>Threshold</var></td><td class="argdescr">- a distance below which two translations are thought to be the same</td></tr>
+<tr><td><var>Obj</var></td><td class="argdescr">- the object id</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_perceived_at/4"><b class="pred">belief_perceived_at</b><var class="arglist">(+ObjType:iri, +Transform:list, +Threshold:float, -Obj:iri)</var></a> is <b class="det">det</b></dt><dd class="defbody">Convenience predicate that first tries to find some existing object
+<var>Obj</var> at the pose <var>Transform</var> and if this fails asserts a new object
+at that pose.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ObjType</var></td><td class="argdescr">- the object type</td></tr>
+<tr><td><var>Transform</var></td><td class="argdescr">- the transform data</td></tr>
+<tr><td><var>Threshold</var></td><td class="argdescr">- a distance below which two translations are thought to be the same</td></tr>
+<tr><td><var>Obj</var></td><td class="argdescr">- the object id</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at/2"><b class="pred">belief_at</b><var class="arglist">(+Obj:iri, ?Transform:list)</var></a> is <b class="det">semidet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at/3"><b class="pred">belief_at</b><var class="arglist">(+Obj:iri, ?Transform:list, +Instant:time)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">True if <var>Transform</var> is the active transform of <var>Obj</var> at time <var>Instant</var> (or the current time).
+The transform is specified as
+[atom reference_frame, atom target_frame, [float x, y, z], [float x, y, z, w]],
+where translations are given in meters.
+
+<p>
+If some frame of reference is specified in <var>Transform</var> the necessary
+transformations are made automatically.</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- the object id</td></tr>
+<tr><td><var>Transform</var></td><td class="argdescr">- the transform data</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- the time instant RDF iri or timestamp</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_relative_to/3"><b class="pred">belief_at_relative_to</b><var class="arglist">(+Child:iri, +Parent:iri, -RelPose:list)</var></a> is <b class="det">semidet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_relative_to/4"><b class="pred">belief_at_relative_to</b><var class="arglist">(+Child:iri, +Parent:iri, -RelPose:list, +Instant:time)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Computes the pose of <var>Child</var> expressed using <var>Parent</var> as the frame of reference.
+This is, for example, useful if it is known that <var>Child</var> will stay fixed in
+<var>Parent</var> frame for a while (e.g., when <var>Child</var> is attached to <var>Parent</var>).
+The pose is specified as
+[atom reference_frame, atom target_frame, [float x, y, z], [float x, y, z, w]],
+where translations are given in meters.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Child</var></td><td class="argdescr">- the child id</td></tr>
+<tr><td><var>Parent</var></td><td class="argdescr">- the parent id</td></tr>
+<tr><td><var>RelPose</var></td><td class="argdescr">- the pose of <var>Child</var> in <var>Parent</var> frame</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- the time instant RDF iri or timestamp</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_global/2"><b class="pred">belief_at_global</b><var class="arglist">(+Obj:iri, ?GlobalPose:list)</var></a> is <b class="det">semidet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_global/3"><b class="pred">belief_at_global</b><var class="arglist">(+Obj:iri, ?GlobalPose:list, +Instant:time)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">True if <var>GlobalPose</var> is the pose of <var>Obj</var> expressed in global coordinates at time <var>Instant</var> (or the current time).
+The pose is specified as
+[atom reference_frame, atom target_frame, [float x, y, z], [float x, y, z, w]],
+where translations are given in meters.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- the object id</td></tr>
+<tr><td><var>GlobalPose</var></td><td class="argdescr">- the transform data in map frame</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- the time instant RDF iri or timestamp</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_update/2"><b class="pred">belief_at_update</b><var class="arglist">(+Obj:iri, +Transform:list)</var></a> is <b class="det">semidet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_update/3"><b class="pred">belief_at_update</b><var class="arglist">(+Obj:iri, +Transform:list, +RelativeTo:iri)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">From now on belief that <var>Obj</var> is located at <var>Transform</var>.
+The transform is specified as
+[atom reference_frame, atom target_frame, [float x, y, z], [float x, y, z, w]],
+where translations are given in meters.
+For global coordinates, the transform can also be specified as
+([float x, y, z], [float x, y, z, w]).
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- the object id</td></tr>
+<tr><td><var>Transform</var></td><td class="argdescr">- the transform data in map frame</td></tr>
+<tr><td><var>RelativeTo</var></td><td class="argdescr">- the reference object of the transform</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_at_internal/3"><b class="pred">belief_at_internal</b><var class="arglist">(+Obj, +TransformData, +RelativeTo)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="belief_republish_objects/1"><b class="pred">belief_republish_objects</b><var class="arglist">(+ObjectIds)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+</dl>
+
+<h2 class="undoc">Undocumented predicates</h2>
+
+<p>
+The following predicates are exported, but not or incorrectly documented.</p>
+
+<dl class="undoc">
+<dt class="undoc"><span style="float:right"></span><a name="belief_at_internal/2"><b class="pred">belief_at_internal</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+</dl>
+
+</body>
+</html>

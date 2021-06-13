@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>semantic_map_utils.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>semantic_map_utils.pl -- Predicates for reading elements of a semantic map</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Lars Kunze</dd><dd class="keyword-author">- Lorenz Moesenlechner</dd><dd class="keyword-author">- Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="map_root_objects/2"><b class="pred">map_root_objects</b><var class="arglist">(Map, Objs)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the 'root objects' in the map, i.e. those that are asserted as
+direct children of the map instance (e.g. cupboards, drawers)
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Map</var></td><td class="argdescr">- Instance of a knowrob:SemanticEnvironmentMap</td></tr>
+<tr><td><var>Objs</var></td><td class="argdescr">- List of instances of the root objects in the map</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_root_object/2"><b class="pred">map_root_object</b><var class="arglist">(Map, Obj)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the 'root objects' in the map, i.e. those that are asserted as
+direct children of the map instance (e.g. cupboards, drawers)
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Map</var></td><td class="argdescr">- Instance of a knowrob:SemanticEnvironmentMap</td></tr>
+<tr><td><var>Objs</var></td><td class="argdescr">- Instance of a root object in the map</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_child_objects/2"><b class="pred">map_child_objects</b><var class="arglist">(+Parent, -Children)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read all object instances asserted as properPhysicalParts of <var>Parent</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Parent</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>Children</var></td><td class="argdescr">- List of object instances asserted as physical part of <var>Parent</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_child_object/2"><b class="pred">map_child_object</b><var class="arglist">(?Parent, ?Child)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read all object instances asserted as properPhysicalParts of <var>Parent</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Parent</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>Child</var></td><td class="argdescr">- Object instance</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_object_info/1"><b class="pred">map_object_info</b><var class="arglist">(-Info)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read information about all objects in the map.
+Returning a structured list for
+each object consisting of the instance ID, the class, the pose, and
+a list of the object dimensions [D, W, H].
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Inst</var></td><td class="argdescr">- Object instance</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_object_type/2"><b class="pred">map_object_type</b><var class="arglist">(?Obj, ?Type)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the type of an object instance
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>Type</var></td><td class="argdescr">- Class of <var>Obj</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_object_label/2"><b class="pred">map_object_label</b><var class="arglist">(?Obj, ?Label)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Reads the rdfs:label of an instance
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>Label</var></td><td class="argdescr">- Value of the rdfs:label annotation</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_object_dimensions/4"><b class="pred">map_object_dimensions</b><var class="arglist">(Obj, D, W, H)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the dimensions (depth, width, height) of an object.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>D</var></td><td class="argdescr">- Object depth (x dimension)</td></tr>
+<tr><td><var>W</var></td><td class="argdescr">- Object Width (y dimension)</td></tr>
+<tr><td><var>H</var></td><td class="argdescr">- Object height (z dimension)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_connection_type/3"><b class="pred">map_connection_type</b><var class="arglist">(Parent, Child, ConnectionType)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Determine the type of connection between <var>Parent</var> and <var>Child</var>, e.g. the type of joint.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Parent</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>Child</var></td><td class="argdescr">- Object instance</td></tr>
+<tr><td><var>ConnectionType</var></td><td class="argdescr">- Type of the connecting element, e.g. 'HingedJoint', 'PrismaticJoint', or 'Fixed'</td></tr>
+</table>
+
+</dd>
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- The computation does not seem correct, but I am not sure what these predicates
+are to do after all, so I let them like this for now (MT).</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_joint_name/3"><b class="pred">map_joint_name</b><var class="arglist">(Parent, Child, Name)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the ID <var>Name</var> of a joint connecting <var>Parent</var> and <var>Child</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Object</var></td><td class="argdescr">- instance</td></tr>
+<tr><td><var>Object</var></td><td class="argdescr">- instance</td></tr>
+<tr><td><var>Instance</var></td><td class="argdescr">- of a Connection-Physical</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_instance/1"><b class="pred">map_instance</b><var class="arglist">(Map)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read instances of a SemanticEnvironmentMap
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Map</var></td><td class="argdescr">- Instance of a knowrob:SemanticEnvironmentMap</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_name/1"><b class="pred">map_name</b><var class="arglist">(Map)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read the 'map_name' out of the map,
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Map</var></td><td class="argdescr">- Instance of a knowrob:SemanticEnvironmentMap</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="map_read_all/2"><b class="pred">map_read_all</b><var class="arglist">(-MapElems, ?MapInstance)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read all objects in a map into a list of lists of form [Element, Parent,
+PoseList].
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ObjList</var></td><td class="argdescr">- List of all objects</td></tr>
+<tr><td><var>Map</var></td><td class="argdescr">- Instance of a knowrob:SemanticEnvironmentMap</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rosprolog</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="wiki">rosprolog</h1>
+
+<p>
+rosprolog is a <a href="http://www.swi-prolog.org/">SWI Prolog</a> interface to ROS,
+and a wrapper around <a href="http://wiki.ros.org/roscpp">roscpp</a>.
+It provides predicates that enable Prolog programmers
+to quickly interface with ROS subsystems, and to maintain dependencies
+to other ROS packages.</p>
+
+<h3 class="wiki">Packages</h3>
+
+<p>
+rosprolog packages are normal ROS packages that, in addition,
+contain some special files and folders.
+This common structure allows to automatically load the package and all its dependencies.</p>
+
+<pre class="code">
+your_package
+|- package.xml
+|- CMakeLists.txt
+|- owl
+   |- your_ontology.owl
+|- prolog
+   |- init.pl
+   |- your_package
+      |- your_module.pl
+      |- your_module.plt
+</pre>
+
+<h3 class="wiki">Usage</h3>
+
+<p>
+To run rosprolog, use:</p>
+
+<pre class="code">
+rosrun rosprolog rosprolog
+</pre>
+
+<p>
+To start a prolog package within rosprolog (incl. calling its <code class="nofile">init.pl</code> file and all <code class="nofile">init.pl</code> of referenced packages), use:</p>
+
+<pre class="code">
+rosrun rosprolog rosprolog &lt;pkgname&gt;
+</pre>
+
+<h3 class="wiki">Unit testing</h3>
+
+<p>
+To run unit tests for some modules in a rosprolog package, use:</p>
+
+<pre class="code">
+rosrun rosprolog rosprolog-test &lt;pkgname&gt; &lt;modulenames&gt;
+</pre>
+
+<h2 class="wiki subdirs">Sub directories</h2>
+
+<table class="subdirs">
+<tr><td><a class="subdir" href="prolog/index.html">[dir] prolog</a></td></tr>
+</table>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+</table>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>computable.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>computable.pl -- Reasoning using procedural attachments, called "computables"</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Bernhard Kirchlechner</dd><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_computable_has/3"><b class="pred">rdfs_computable_has</b><var class="arglist">(?Frame, ?Property, ?Value)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Maps to <code>rdf_triple(Property, Frame, Value)</code>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_triple/3"><b class="pred">rdf_triple</b><var class="arglist">(?Property, ?Frame, ?Value)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True for triples (<var>Frame</var>, <var>Property</var>, <var>Value</var>) ins the RDF store
+and which can be deduced from computable predicates.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_instance_of/2"><b class="pred">rdfs_instance_of</b><var class="arglist">(?Resource, ?RDF_Type)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>RDF_Type</var> is the type of <var>Resource</var> during Interval
+according to RDFS, or computable semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Resource</var></td><td class="argdescr">- RDF resource iri</td></tr>
+<tr><td><var>RDF_Type</var></td><td class="argdescr">- RDF type iri</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_computable_class/2"><b class="pred">rdfs_computable_class</b><var class="arglist">(+Class, -ComputableClass)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Search for computable classes with the target <var>Class</var></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_computable_property/2"><b class="pred">rdfs_computable_property</b><var class="arglist">(+Property, -ComputableProperty)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Search <var>ComputableProperty</var> with the target <var>Property</var>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_computable_instance_of/2"><b class="pred">rdfs_computable_instance_of</b><var class="arglist">(?Instance, ?Class)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Compute computable instances of <var>Class</var>
+
+<p>
+At least one of <var>Instance</var> and <var>Class</var> needs to be nonvar.</p></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_computable_triple/3"><b class="pred">rdfs_computable_triple</b><var class="arglist">(+Property, ?Frame, ?Value)</var></a></dt><dd class="defbody">Unify the property triple for a computable property.
+Full caching is enabled for everything but (+,-,-)
+and temporal computable properties.</dd>
+<dt class="multidef"><span style="float:right"></span><a name="rdfs_computable_triple_during/4"><b class="pred">rdfs_computable_triple_during</b><var class="arglist">(?Property, ?Frame, ?Value, +Interval)</var></a><span class="anot" style="float:right">[multifile]</span></dt><dd class="defbody">Unify the property triple for a computable property.
+No caching is performed.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_assert_prop_conc/2"><b class="pred">rdfs_assert_prop_conc</b><var class="arglist">(+List, -Resource)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_assert_prop_conc/3"><b class="pred">rdfs_assert_prop_conc</b><var class="arglist">(+List, -Resource, +Graph)</var></a></dt><dd class="defbody">Create a propertyConcatenation from a prolog list</dd>
+</dl>
+
+</body>
+</html>

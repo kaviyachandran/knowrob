@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>comp_similarity.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>comp_similarity.pl -- Computables that calculate semantic similarities between objects.</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth, Lars Kunze, Martin Schuster</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_wup_similarity/3"><b class="pred">rdf_wup_similarity</b><var class="arglist">(+A:rdf_class, +B:rdf_class, -Sim:float)</var></a></dt><dd class="defbody">Calculates WUP similarty between two classes
+
+<p>
+similarity = <code>depth(LeastCommonSuperclass)</code> / (1/2 * (<code>depth(A)</code> + <code>depth(B)</code>))</p>
+
+<p>
+similarity of <var>A</var> and <var>A</var> is 1</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>A</var></td><td class="argdescr">- one of the two classes</td></tr>
+<tr><td><var>B</var></td><td class="argdescr">- second of the two classes</td></tr>
+<tr><td><var>Sim</var></td><td class="argdescr">- similarty measure between 0 (not similar) and 1 (most similar)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_wup_similarity_given_LCS/4"><b class="pred">rdf_wup_similarity_given_LCS</b><var class="arglist">(+A:rdf_class, +B:rdf_class, +LCS:rdf_class, -Sim:float)</var></a></dt><dd class="defbody">Calculates WUP similarty between two classes using a given least common ancestor
+
+<p>
+similarity = <code>depth(LCS)</code> / (1/2 * (<code>depth(A)</code> + <code>depth(B)</code>))</p>
+
+<p>
+similarity of <var>A</var> and <var>A</var> is 1</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>A</var></td><td class="argdescr">- one of the two classes</td></tr>
+<tr><td><var>B</var></td><td class="argdescr">- second of the two classes</td></tr>
+<tr><td><var>LCS</var></td><td class="argdescr">- least common ancestor</td></tr>
+<tr><td><var>Sim</var></td><td class="argdescr">- similarty measure between 0 (not similar) and 1 (most similar)</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_path_distance/3"><b class="pred">rdf_path_distance</b><var class="arglist">(+A, +B, -Dist)</var></a></dt><dd class="defbody">Compute the path distance between <var>A</var> and <var>B</var>, i.e. the inverse of the length of the shortest path
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>A</var></td><td class="argdescr">- OWL class</td></tr>
+<tr><td><var>B</var></td><td class="argdescr">- OWL class</td></tr>
+<tr><td><var>Paths</var></td><td class="argdescr">- List of elements along the path between <var>A</var> and <var>B</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_shortest_path/3"><b class="pred">rdf_shortest_path</b><var class="arglist">(+A, +B, -Dist)</var></a></dt><dd class="defbody">Compute the length of the shortest path between <var>A</var> and <var>B</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>A</var></td><td class="argdescr">- OWL class</td></tr>
+<tr><td><var>B</var></td><td class="argdescr">- OWL class</td></tr>
+<tr><td><var>Paths</var></td><td class="argdescr">- Lenght of the shortest path between <var>A</var> and <var>B</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_paths/3"><b class="pred">rdf_paths</b><var class="arglist">(+A, +B, -Paths)</var></a></dt><dd class="defbody">Compute path between classes <var>A</var> and <var>B</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>A</var></td><td class="argdescr">- OWL class</td></tr>
+<tr><td><var>B</var></td><td class="argdescr">- OWL class</td></tr>
+<tr><td><var>Paths</var></td><td class="argdescr">- List of elements along the path between <var>A</var> and <var>B</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_most_similar/4"><b class="pred">rdf_most_similar</b><var class="arglist">(Class, Super, N, NMostSim)</var></a></dt><dd class="defbody">Find the <var>N</var> sub-classes of <var>Super</var> that are most similar to <var>Class</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> to be considered</td></tr>
+<tr><td><var>Super</var></td><td class="argdescr">- Common super-class</td></tr>
+<tr><td><var>N</var></td><td class="argdescr">- Number of similar classes to be computed</td></tr>
+<tr><td><var>NMostSim</var></td><td class="argdescr">- List of the <var>N</var> most similar classes</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

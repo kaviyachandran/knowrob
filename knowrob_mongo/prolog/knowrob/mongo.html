@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mongo.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>mongo.pl -- Integration of mongo data into symbolic reasoning in KnowRob</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_interface/1"><b class="pred">mng_interface</b><var class="arglist">(-Mongo)</var></a> is <b class="det">det</b></dt><dd class="defbody">Get handle to the java object of mongo client.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_db/1"><b class="pred">mng_db</b><var class="arglist">(+DBName)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Change mongo database state used by KnowRob.
+Note: This is currently not threadsafe!
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>DBName</var></td><td class="argdescr">- The name of the db (e.g., 'roslog')</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_timestamp/2"><b class="pred">mng_timestamp</b><var class="arglist">(+Date, -Stamp)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Computes a timestamp that corresponds to the specified date.
+date format must be as follows: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Date</var></td><td class="argdescr">- String representation of a date</td></tr>
+<tr><td><var>Stamp</var></td><td class="argdescr">- Floating point timestamp that represents the date</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_distinct_values/3"><b class="pred">mng_distinct_values</b><var class="arglist">(+Collection, +Key, -Values)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Determine distinct values of the records with <var>Key</var> in <var>Collection</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Collection</var></td><td class="argdescr">- The name of the MONGO DB collection</td></tr>
+<tr><td><var>Key</var></td><td class="argdescr">- The field key</td></tr>
+<tr><td><var>Values</var></td><td class="argdescr">- List of distinct values</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor/3"><b class="pred">mng_cursor</b><var class="arglist">(+Collection, +Pattern, -DBCursor)</var></a></dt><dd class="defbody">Create a DB cursor of query results for records in
+<var>Collection</var>.
+The resulting DB <code>object(s)</code> match the query pattern <var>Pattern</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Collection</var></td><td class="argdescr">- The name of the MONGO DB collection</td></tr>
+<tr><td><var>DBCursor</var></td><td class="argdescr">- The resulting DB cursor</td></tr>
+<tr><td><var>Pattern</var></td><td class="argdescr">- The query pattern</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query_latest/4"><b class="pred">mng_query_latest</b><var class="arglist">(+Collection, -DBObj, +TimeKey, +TimeValue)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query_latest/5"><b class="pred">mng_query_latest</b><var class="arglist">(+Collection, -DBObj, +TimeKey, +TimeValue, +Pattern)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query_earliest/4"><b class="pred">mng_query_earliest</b><var class="arglist">(+Collection, -DBObj, +TimeKey, +TimeValue)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query_earliest/5"><b class="pred">mng_query_earliest</b><var class="arglist">(+Collection, -DBObj, +TimeKey, +TimeValue, +Pattern)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query/2"><b class="pred">mng_query</b><var class="arglist">(+Collection, -DBObj)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query/3"><b class="pred">mng_query</b><var class="arglist">(+Collection, -DBObj, +Pattern)</var></a></dt><dd class="defbody">Query for DB object in <var>Collection</var>.
+If a query pattern is given then the resulting DB <code>object(s)</code> must match this pattern.
+<var>DBObj</var> is a term of the form: <code>one(X)</code>, <code>all(X)</code> or <code>some(X,Count)</code> where Count is an integer.
+The results are sorted ascending or descending w.r.t. the key <var>TimeKey</var> if given.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Collection</var></td><td class="argdescr">- The name of the MONGO DB collection</td></tr>
+<tr><td><var>DBObj</var></td><td class="argdescr">- The resulting DB <code>object(s)</code></td></tr>
+<tr><td><var>TimeKey</var></td><td class="argdescr">- The DB key used for sorting</td></tr>
+<tr><td><var>TimeValue</var></td><td class="argdescr">- DB objects earlier/later are ignored (depending on sort mode)</td></tr>
+<tr><td><var>Pattern</var></td><td class="argdescr">- The query pattern</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_query_incremental/3"><b class="pred">mng_query_incremental</b><var class="arglist">(+Collection, +Goal, +Pattern)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Incrementally compute DB objects matching <var>Pattern</var>, and
+call <var>Goal</var> for each result.
+The DBObject is appended as last argument to <var>Goal</var>.
+For example <code>Goal=my_predicate(X)</code> turns to <code>call(my_predicate(X,DBObject))</code>
+for each resulting DB object.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor_descending/3"><b class="pred">mng_cursor_descending</b><var class="arglist">(+In, +Key, -Out)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor_ascending/3"><b class="pred">mng_cursor_ascending</b><var class="arglist">(+In, +Key, -Out)</var></a></dt><dd class="defbody">Sorts the DB cursor <var>In</var> w.r.t. <var>Key</var>, the sorted collection
+can be accessed via the new DB cursor <var>Out</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>In</var></td><td class="argdescr">- Input DB cursor</td></tr>
+<tr><td><var>Key</var></td><td class="argdescr">- The sort key</td></tr>
+<tr><td><var>Out</var></td><td class="argdescr">- Output DB cursor</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor_limit/3"><b class="pred">mng_cursor_limit</b><var class="arglist">(+In:javaobject, +N:integer, -Out:javaobject)</var></a></dt><dd class="defbody"><var>Out</var> is the same mongo DB cursor as <var>In</var> but limited to <var>N</var> results.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor_read/2"><b class="pred">mng_cursor_read</b><var class="arglist">(+DBCursor, -DBObj)</var></a></dt><dd class="defbody">Read DB objects from cursor.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>DBCursor</var></td><td class="argdescr">- The DB cursor</td></tr>
+<tr><td><var>DBObj</var></td><td class="argdescr">- The resulting DB <code>object(s)</code></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor_process/2"><b class="pred">mng_cursor_process</b><var class="arglist">(+DBCursor, +Goal)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Incrementally compute DB objects from <var>DBCursor</var>, and
+call <var>Goal</var> for each result.
+The DBObject is appended as last argument to <var>Goal</var>.
+For example <code>Goal=my_predicate(X)</code> turns to <code>call(my_predicate(X,DBObject))</code>
+for each resulting DB object.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_cursor_read/2"><b class="pred">mng_cursor_read</b><var class="arglist">(+DBCursor, +DBObjects)</var></a></dt><dd class="defbody">Read DB objects from cursor.
+<var>DBObjects</var> is one of <code>one(DBObj)</code>, <code>all(DBObj)</code>, or <code>some(DBObj,Count)</code>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>DBCursor</var></td><td class="argdescr">- The DB cursor</td></tr>
+<tr><td><var>DBObj</var></td><td class="argdescr">- The resulting DB <code>object(s)</code></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_value_object/2"><b class="pred">mng_value_object</b><var class="arglist">(+Val, ObjJava)</var></a></dt><dd class="defbody">Convert value to Java type compatible with MONGO queries.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Val</var></td><td class="argdescr">- The value</td></tr>
+<tr><td><var>ObjJava</var></td><td class="argdescr">- Java value compatible with MONGO queries</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_republisher/1"><b class="pred">mng_republisher</b><var class="arglist">(-Republisher)</var></a> is <b class="det">det</b></dt><dd class="defbody">Get handle to the java object of mongo republisher.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_republish/3"><b class="pred">mng_republish</b><var class="arglist">(+TypedDBObj, +Topic, -Msg)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_republish/5"><b class="pred">mng_republish</b><var class="arglist">(+DBObj, +TypeJava, +TypeString, +Topic, -Msg)</var></a></dt><dd class="defbody">Generate a ROS message based on Mongo DB object
+and publish the message on a specified topic.
+<var>TypedDBObj</var> is one of <code>bool(DBObj)</code>, <code>str(DBObj)</code>, <code>float32(DBObj)</code>,
+<code>float64(DBObj)</code>, <code>int32(DBObj)</code>, <code>int64(DBObj)</code>, <code>image(DBObj)</code>,
+<code>pcl(DBObj)</code>, <code>camera(DBObj)</code>, or <code>tf(DBObj)</code>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>TypedDBObj</var></td><td class="argdescr">- The DB object (result of a query)</td></tr>
+<tr><td><var>Topic</var></td><td class="argdescr">- The message topic</td></tr>
+<tr><td><var>TypeJava</var></td><td class="argdescr">- The Java class of the message (e.g., 'std_msgs.Bool')</td></tr>
+<tr><td><var>TypeString</var></td><td class="argdescr">- The message type identifier (e.g., 'std_msgs/Bool')</td></tr>
+<tr><td><var>Msg</var></td><td class="argdescr">- The generated message</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_ros_message/2"><b class="pred">mng_ros_message</b><var class="arglist">(+DBObj, -Msg)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_ros_message/4"><b class="pred">mng_ros_message</b><var class="arglist">(+DBObj, +TypeJava, +TypeString, -Msg)</var></a></dt><dd class="defbody">Generate a ROS message based on Mongo DB object.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>DBObj</var></td><td class="argdescr">- The DB object (result of a query)</td></tr>
+<tr><td><var>TypeJava</var></td><td class="argdescr">- The Java class of the message (e.g., 'std_msgs.Bool')</td></tr>
+<tr><td><var>TypeString</var></td><td class="argdescr">- The message type identifier (e.g., 'std_msgs/Bool')</td></tr>
+<tr><td><var>Msg</var></td><td class="argdescr">- The generated message</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

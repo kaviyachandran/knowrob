@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mongo_tf.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>mongo_tf.pl -- Looking up tf transforms in a mongo DB</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_lookup_transform/4"><b class="pred">mng_lookup_transform</b><var class="arglist">(+TargetFrame, +SourceFrame, -Pose, +Instant)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Determine the transform from Source to Target at time <var>Instant</var> based on the logged
+tf data.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>TargetFrame</var></td><td class="argdescr">- Target frame ID</td></tr>
+<tr><td><var>SourceFrame</var></td><td class="argdescr">- Source frame ID</td></tr>
+<tr><td><var>Pose</var></td><td class="argdescr">- The pose in the form of pose([float x,y,z],[float qx,qy,qz,qw])</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- The time instant</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_transform_pose/5"><b class="pred">mng_transform_pose</b><var class="arglist">(+SourceFrame, +TargetFrame, +PoseIn, -PoseOut, -Instant)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Transform a pose into <var>TargetFrame</var> at time <var>Instant</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>SourceFrame</var></td><td class="argdescr">- Tf frame the source matrix is described in</td></tr>
+<tr><td><var>TargetFrame</var></td><td class="argdescr">- Tf frame the source matrix is to be transformed into</td></tr>
+<tr><td><var>PoseIn</var></td><td class="argdescr">- Term of form pose([float x,y,z],[float qx,qy,qz,qw])</td></tr>
+<tr><td><var>PoseOut</var></td><td class="argdescr">- Term of form pose([float x,y,z],[float qx,qy,qz,qw])</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- Time point at which the transformation is to be determined</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="mng_comp_pose/3"><b class="pred">mng_comp_pose</b><var class="arglist">(+Obj, -Pose, +Interval)</var></a></dt><dd class="defbody"><var>Pose</var> is an OWL individual of knowrob:'<var>Pose</var>' that represents logged tf data.</dd>
+</dl>
+
+</body>
+</html>

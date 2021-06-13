@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>srdl2.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>srdl2.pl -- Reasoning about robot components and capabilities</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="robot_part_tf_prefix/2"><b class="pred">robot_part_tf_prefix</b><var class="arglist">(?RobotPart, ?TfPrefix)</var></a></dt><dd class="defbody">Checks if the Agent individual that belongs to this Part (URDF Link) has a tf Prefix assigned
+<var>TfPrefix</var> defaults to '/'
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>RobotPart</var></td><td class="argdescr">- The part of the robot that should be checked(URDF Link)</td></tr>
+<tr><td><var>TfPrefix</var></td><td class="argdescr">- The <var>TfPrefix</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="robot_tf_prefix/2"><b class="pred">robot_tf_prefix</b><var class="arglist">(?Robot, ?TfPrefix)</var></a></dt><dd class="defbody">Checks if an Agent individual has a tf Prefix assigned
+<var>TfPrefix</var> defaults to '/'
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>RobotPart</var></td><td class="argdescr">- The robot individual</td></tr>
+<tr><td><var>TfPrefix</var></td><td class="argdescr">- The <var>TfPrefix</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_feasible_on_robot/2"><b class="pred">action_feasible_on_robot</b><var class="arglist">(?Action, ?Robot)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="action_feasible_on_robot/3"><b class="pred">action_feasible_on_robot</b><var class="arglist">(?Action, ?ActionDescription, ?Robot)</var></a></dt><dd class="defbody">Verifies that an action is feasible on the given robot by making
+sure that neither capabilites nor components are missing.
+
+<p>
+The 3-argument variant also checks restrictions on action parameters
+with the action instance described in <var>ActionDescription</var>.</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class to be checked</td></tr>
+<tr><td><var>ActionDescription</var></td><td class="argdescr">- Designator that includes some action parameters</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="action_feasible_with_components/4"><b class="pred">action_feasible_with_components</b><var class="arglist">(+ActionC, +ActionD, +Robot, -Components)</var></a></dt><dd class="defbody">True for feasible actions of type <var>ActionC</var> for which a
+<var>Components</var> list exists such that each element is one of the required components
+without any unsatisfied restrictions imposed on the action described by <var>ActionD</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>ActionD</var></td><td class="argdescr">- Action individual or description to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>Components</var></td><td class="argdescr">- List of components feasible for the action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="missing_for_action/4"><b class="pred">missing_for_action</b><var class="arglist">(Action, Robot, MissingCaps, MissingComps)</var></a></dt><dd class="defbody">Determines all components and capabilites that are required by an action,
+but are not available on the given robot.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="unsatisfied_restr_for_action/5"><b class="pred">unsatisfied_restr_for_action</b><var class="arglist">(ActionC, ActionD, Robot, CompC, Unsatisfied)</var></a></dt><dd class="defbody">Checks if any action restriction imposed on robot or component level
+is unsatisfied.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>ActionD</var></td><td class="argdescr">- Action description or instance to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>CompC</var></td><td class="argdescr">- Required component class with unsatisfied restrictions</td></tr>
+<tr><td><var>Unsatisfied</var></td><td class="argdescr">- Tuples of component individuals and unsatisfied restrictions</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="unsatisfied_restr_for_required_comp/5"><b class="pred">unsatisfied_restr_for_required_comp</b><var class="arglist">(ActionC, ActionD, Robot, CompC, RestrictedComponents)</var></a></dt><dd class="defbody">Checks if any action restriction imposed on component level
+is unsatisfied.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>ActionD</var></td><td class="argdescr">- Action description or instance to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>CompC</var></td><td class="argdescr">- Required component class with unsatisfied restrictions</td></tr>
+<tr><td><var>RestrictedComponents</var></td><td class="argdescr">- Tuples of component and unsatisfied restrictions</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="unsatisfied_restr_for_comp/5"><b class="pred">unsatisfied_restr_for_comp</b><var class="arglist">(ActionC, ActionD, Robot, Comp, Unsatisfied)</var></a></dt><dd class="defbody">Checks if any action restriction is unsatisfied.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>ActionD</var></td><td class="argdescr">- Action description or instance to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>Comp</var></td><td class="argdescr">- Component to be chacked</td></tr>
+<tr><td><var>Unsatisfied</var></td><td class="argdescr">- List of unsatsfied action restrictions</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="missing_cap_for_action/3"><b class="pred">missing_cap_for_action</b><var class="arglist">(Action, Robot, Cap)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Missing capabilites are required, but not available on the robot
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>Cap</var></td><td class="argdescr">- Capability required to perform the action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="required_cap_for_action/2"><b class="pred">required_cap_for_action</b><var class="arglist">(Action, Cap)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Capabilities required by an action and all of its sub-actions
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class to be checked</td></tr>
+<tr><td><var>Cap</var></td><td class="argdescr">- Capability required to perform the action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="cap_available_on_robot/2"><b class="pred">cap_available_on_robot</b><var class="arglist">(Cap, Robot)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if a capability is available on a robot. This is the case if the capability
+
+<p>
+1) is asserted for this robot class</p>
+
+<p>
+2) is asserted for this robot instance</p>
+
+<p>
+3) depends only on available components and sub-capabilites</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Cap</var></td><td class="argdescr">- Capability class to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="missing_comp_for_action/3"><b class="pred">missing_comp_for_action</b><var class="arglist">(Action, Robot, Comp)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Missing components are required, but not available on the robot
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>Comp</var></td><td class="argdescr">- Component required to perform the action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="insufficient_comp_for_action/4"><b class="pred">insufficient_comp_for_action</b><var class="arglist">(+ActionC, +ActionD, +Robot, ?Comp)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Insufficient components are required, but not available on the robot
+or available but not satisfying some restrictions imposed on the action
+(e.g., weak arms can't lift heavy objects).
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>ActionD</var></td><td class="argdescr">- Action individual or description to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>Comp</var></td><td class="argdescr">- Component required to perform the action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="required_comp_for_action/2"><b class="pred">required_comp_for_action</b><var class="arglist">(Action, Comp)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Components that are either directly required by an action and
+all of its sub-actions, or indirectly required by required
+capabilities
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Action</var></td><td class="argdescr">- <var>Action</var> class to be checked</td></tr>
+<tr><td><var>Comp</var></td><td class="argdescr">- Component required to perform the action</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_restricted_action/3"><b class="pred">comp_restricted_action</b><var class="arglist">(+Comp, ?ActionC, ?RestrictedC)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Yields restricted action classes of components that are subclass
+of the action class.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Comp</var></td><td class="argdescr">- Component required to perform the action</td></tr>
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>RestrictedC</var></td><td class="argdescr">- Restricted action class possible with component</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_type_available/2"><b class="pred">comp_type_available</b><var class="arglist">(+Super, +SubT)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Super</var> has a sub-component Sub of type <var>SubT</var>
+(i.e. if a component of that type is available as part of <var>Super</var>)
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Super</var></td><td class="argdescr">- Upper component</td></tr>
+<tr><td><var>SubT</var></td><td class="argdescr">- Type of a Component that is part of the <var>Super</var> component</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="sub_component/2"><b class="pred">sub_component</b><var class="arglist">(?Super, ?Sub)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Recursively read all sub-components of a robot or a component
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Super</var></td><td class="argdescr">- Upper component</td></tr>
+<tr><td><var>Sub</var></td><td class="argdescr">- Component that is part of the <var>Super</var> component</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="succeeding_link/2"><b class="pred">succeeding_link</b><var class="arglist">(+BaseLink, +SucceedingLink)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>SucceedingLink</var> is successor link of <var>BaseLink</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>BaseLink</var></td><td class="argdescr">- The base UrdfLink</td></tr>
+<tr><td><var>SucceedingLink</var></td><td class="argdescr">- The succeeding UrdfLink</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_installable_for_action/4"><b class="pred">comp_installable_for_action</b><var class="arglist">(+ActionC, +ActionD, +Robot, -Components)</var></a></dt><dd class="defbody">For each insufficient component for the action, obtain a set of
+sufficient component individuals that could be installed on the robot.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>ActionC</var></td><td class="argdescr">- Action class to be checked</td></tr>
+<tr><td><var>ActionD</var></td><td class="argdescr">- Action individual or description to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+<tr><td><var>Components</var></td><td class="argdescr">- Sequence of installation candidates for each insufficient component</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_installable_on_robot/3"><b class="pred">comp_installable_on_robot</b><var class="arglist">(+Comp, +CompC, +Robot)</var></a></dt><dd class="defbody">True for components <var>Comp</var> of type <var>CompC</var> that can be installed on the robot.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>CompC</var></td><td class="argdescr">- Component class to be checked</td></tr>
+<tr><td><var>Comp</var></td><td class="argdescr">- Component individual to be checked</td></tr>
+<tr><td><var>Robot</var></td><td class="argdescr">- <var>Robot</var> instance to be checked</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_baselink_pose/2"><b class="pred">comp_baselink_pose</b><var class="arglist">(+Obj, -Pose)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_baselink_pose/3"><b class="pred">comp_baselink_pose</b><var class="arglist">(+Obj, -Pose, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Computes the pose of a component composition as the
+pose of one of its base links.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="srdl_inFieldOfView/2"><b class="pred">srdl_inFieldOfView</b><var class="arglist">(+Agent, ?Object)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="srdl_inFieldOfView/3"><b class="pred">srdl_inFieldOfView</b><var class="arglist">(+Agent, ?Object, +Instant)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if Obj is visible by <var>Agent</var> at time <var>Instant</var> by reading the camera
+properties from the robot's SRDL description and computing whether the
+object center is inside the view frustrum.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Agent</var></td><td class="argdescr">- Some agent with a srdl:Camera component</td></tr>
+<tr><td><var>Obj</var></td><td class="argdescr">- Instance of an object in the scene</td></tr>
+<tr><td><var>Instant</var></td><td class="argdescr">- The time instant</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

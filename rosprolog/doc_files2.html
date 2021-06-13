@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>doc_files2.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>doc_files2.pl -- Create stand-alone documentation files</h1>
+
+<p>
+Create stand-alone documentation from a bundle of source-files. Typical
+use of the PlDoc package is to run it as a web-server from the project
+in progress, providing search and guaranteed consistency with the loaded
+version. Creating stand-alone files as provided by this file can be
+useful for printing or distribution.</p>
+
+<dl class="tags">
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- Generate a predicate index?</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="doc_save/2"><b class="pred">doc_save</b><var class="arglist">(+FileOrDir, +Options)</var></a></dt><dd class="defbody">Save documentation for <var>FileOrDir</var> to <code>file(s)</code>. <var>Options</var> include
+
+<dl class="termlist">
+<dt class="term"><b class="pred">format</b><var class="arglist">(+Format)</var></dt><dd>Currently only supports <code>html</code>.</dd>
+<dt class="term"><b class="pred">doc_root</b><var class="arglist">(+Dir)</var></dt><dd>Save output to the given directory. Default is to save
+the documentation for a file in the same directory as
+the file and for a directory in a subdirectory <code>doc</code>.</dd>
+<dt class="term"><b class="pred">title</b><var class="arglist">(+Title)</var></dt><dd><var>Title</var> is an atom that provides the HTML title of the
+main (index) page. Only meaningful when generating
+documentation for a directory.</dd>
+<dt class="term"><b class="pred">man_server</b><var class="arglist">(+RootURL)</var></dt><dd>Root of a manual server used for references to built-in
+predicates. Default is
+<code>http://www.swi-prolog.org/pldoc/</code></dd>
+<dt class="term"><b class="pred">index_file</b><var class="arglist">(+Base)</var></dt><dd>Filename for directory indices. Default is <code>index</code>.</dd>
+<dt class="term"><b class="pred">if</b><var class="arglist">(Condition)</var></dt><dd>What to do with files in a directory. <code>loaded</code> (default)
+only documents files loaded into the Prolog image. <code>true</code>
+documents all files.</dd>
+<dt class="term"><b class="pred">recursive</b><var class="arglist">(+Bool)</var></dt><dd>If <code>true</code>, recurse into subdirectories.</dd>
+<dt class="term"><b class="pred">css</b><var class="arglist">(+Mode)</var></dt><dd>If <code>copy</code>, copy the CSS file to created directories.
+Using <code>inline</code>, include the CSS file into the created
+files. Currently, only the default <code>copy</code> is supported.</dd>
+</dl>
+
+<p>
+The typical use-case is to document the Prolog files that belong
+to a project in the current directory. To do this load the
+Prolog files and run the goal below. This creates a
+sub-directory <code>doc</code> with an index file <code>index.html</code>. It
+replicates the directory structure of the source directory,
+creating an HTML file for each Prolog file and an index file for
+each sub-directory. A copy of the required CSS and image
+resources is copied to the <code>doc</code> directory.</p>
+
+<pre class="code" ext="">
+?- doc_save(., [recursive(true)]).
+</pre>
+
+</dd>
+</dl>
+
+<h2 class="wiki">Re-exported predicates</h2>
+
+<p>
+The following predicates are re-exported from other modules</p>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="doc_pack/1"><b class="pred">doc_pack</b><var class="arglist">(+Pack)</var></a></dt><dd class="defbody">Generate stand-alone documentation for the package <var>Pack</var>. The
+documentation is generated in a directory <code>doc</code> inside the pack.
+The index page consists of the content of <code>readme</code> or
+<code>readme.txt</code> in the main directory of the pack and an index of
+all files and their public predicates.</dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>plunit.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>plunit.pl -- Unit Testing</h1>
+
+<p>
+Unit testing environment for SWI-Prolog and SICStus Prolog. For usage,
+please visit <a href="http://www.swi-prolog.org/pldoc/package/plunit.html.">http://www.swi-prolog.org/pldoc/package/plunit.html.</a></p>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Jan Wielemaker</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- artistic</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="set_test_options/1"><b class="pred">set_test_options</b><var class="arglist">(+Options)</var></a></dt><dd class="defbody">Specifies how to deal with test suites. Defined options are:
+
+<dl class="termlist">
+<dt class="term"><b class="pred">load</b><var class="arglist">(+Load)</var></dt><dd>Whether or not the tests must be loaded. Values are
+<code>never</code>, <code>always</code>, <code>normal</code> (only if not optimised)</dd>
+<dt class="term"><b class="pred">run</b><var class="arglist">(+When)</var></dt><dd><var>When</var> the tests are run. Values are <code>manual</code>, <code>make</code>
+or <code>make(all)</code>.</dd>
+<dt class="term"><b class="pred">silent</b><var class="arglist">(+Bool)</var></dt><dd>If <code>true</code> (default <code>false</code>), report successful tests
+using message level <code>silent</code>, only printing errors and
+warnings.</dd>
+<dt class="term"><b class="pred">sto</b><var class="arglist">(+Bool)</var></dt><dd>How to test whether code is subject to occurs check
+(STO). If <code>false</code> (default), STO is not considered.
+If <code>true</code> and supported by the hosting Prolog, code
+is run in all supported unification mode and reported
+if the results are inconsistent.</dd>
+<dt class="term"><b class="pred">cleanup</b><var class="arglist">(+Bool)</var></dt><dd>If <code>true</code> (default =false), cleanup report at the end
+of <a href="plunit.html#run_tests/1">run_tests/1</a>. Used to improve cooperation with
+memory debuggers such as dmalloc.</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="begin_tests/1"><b class="pred">begin_tests</b><var class="arglist">(+UnitName:atom)</var></a> is <b class="det">det</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="begin_tests/2"><b class="pred">begin_tests</b><var class="arglist">(+UnitName:atom, Options)</var></a> is <b class="det">det</b></dt><dd class="defbody">Start a test-unit. <var>UnitName</var> is the name of the test set. the
+unit is ended by :- <code>end_tests(UnitName)</code>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="end_tests/1"><b class="pred">end_tests</b><var class="arglist">(+Name)</var></a> is <b class="det">det</b></dt><dd class="defbody">Close a unit-test module.
+
+<dl class="tags">
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- Run tests/clean module?</dd><dd class="keyword-tbd">- End of file?</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="run_tests/0"><b class="pred">run_tests</b></a> is <b class="det">semidet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="run_tests/1"><b class="pred">run_tests</b><var class="arglist">(+TestSet)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="running_tests/0"><b class="pred">running_tests</b></a> is <b class="det">det</b></dt><dd class="defbody">Print the currently running test.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="test_report/1"><b class="pred">test_report</b><var class="arglist">(What)</var></a> is <b class="det">det</b></dt><dd class="defbody">Produce reports on test results after the run.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="load_test_files/1"><b class="pred">load_test_files</b><var class="arglist">(+Options)</var></a> is <b class="det">det</b></dt><dd class="defbody">Load .plt test-files related to loaded source-files.</dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob_vis</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="wiki">knowrob_vis</h1>
+
+<p>
+Utilities for the visualization of knowledge pieces.
+This package follows a client-server scheme:
+The server side (knowrob_vis) generates only messages describing what
+should be visualized, and clients can subscribe to these messages
+and update their canvas accordingly.</p>
+
+<p>
+The visualization module <code class="nofile">marker_vis.pl</code> is based on
+RViz <a href="http://www.ros.org/wiki/rviz/DisplayTypes/Marker">marker messages</a>.
+These describe some 3D visual information, such as some
+basic 3D shapes, but also complex meshes.
+RViz can be used as visualization client for marker messages generated in KnowRob.
+However, the marker message definition is extended by KnowRob with some new marker types,
+these won't show up in RViz.</p>
+
+<p>
+The second visualization interface implemented in this package is the data visualization
+module <code class="nofile">data_vis.pl</code>.
+<a href="https://raw.githubusercontent.com/code-iai/iai_common_msgs/master/data_vis_msgs/msg/DataVis.msg">Data visualization messages</a> contain
+a set of data records together with some visualization hints such
+as diagram type, axis labels, font size, etc.
+How in particular the data is displayed is up to the data visualization
+client.
+At the moment only <a href="http://www.open-ease.org/">openEASE</a> implements such a client.</p>
+
+<p>
+knowrob_vis comes with a minimal implementation of a visualization
+client based on the
+<a href="https://github.com/RobotWebTools/ros3djs">ros3djs library</a>
+that runs in browsers with webgl support.
+The server can be started with <a href="vis.html#visualisation_server/0">visualisation_server/0</a>, and then be accessed
+on <a href="http://localhost:1111">localhost</a>.</p>
+
+<h3 class="wiki">Marker visualization</h3>
+
+<p>
+First, setup the rosbridge communication interface and initialize the <code>knowrob_vis</code> package.</p>
+
+<pre class="code">
+roslaunch rosbridge_server rosbridge_websocket.launch
+rosrun rosprolog rosprolog knowrob_vis
+</pre>
+
+<p>
+Start the local visualization server, and connect to it with your browser (port 1111).</p>
+
+<pre class="code">
+?- visualisation_server.
+</pre>
+
+<p>
+Create some visualization markers, and publish them to be displayed by visualization clients:</p>
+
+<pre class="code">
+?- marker(cube(a),X),
+   marker_color(X,[1,0,0]),
+   marker_scale(X,2),
+   marker_publish.
+</pre>
+
+<h4 class="wiki">Marker Types</h4>
+
+<p>
+The set of supported primitive marker types is
+arrow, cube, sphere, cylinder, line_strip,
+line_list, cube_list, sphere_list, points, text_view_facing,
+mesh_resource and triangle_list.</p>
+
+<p>
+In addition, KnowRob supports a set of complex marker types.</p>
+<ul>
+<li><strong><code>cylinder_tf(Frame0,Frame1)</code></strong>: A cylinder between 2 links</li>
+<li><strong><code>link(Frame)</code></strong>: A marker that takes the pose of a link</li>
+<li><strong><code>trajectory(Frame)</code></strong>: A trajectory of a link</li>
+<li><strong><code>pointer(Frame0,Frame1)</code></strong>: Arrow that points from Frame0 in the direction of Frame1</li>
+<li><strong><code>object(Name)</code></strong>: A marker that represents an OWL individual (including children objects)</li>
+<li><strong><code>agent(Name)</code></strong>: A marker that represents an OWL agent individual (including all links)</li>
+<li><strong><code>stickman(Name)</code></strong>: A special human skeleton visualization, kinematic structure is spanned by the OWL individual indentified by Name</li>
+</ul>
+
+<h4 class="wiki">3D object meshes</h4>
+
+<p>
+KnowRob supports the visualization of objects using 3D surface meshes in the STL or Collada file formats.
+These meshes can either be attached to an object instance or to an object class,
+in which case they are used for visualization of all of its instances.
+The following OWL snippet shows how an instance
+can be linked to its CAD model using the <a href="http://knowrob.org/kb/knowrob.owl#pathToCadModel">pathToCadModel</a> property:</p>
+
+<pre class="code">
+&lt;owl:NamedIndividual rdf:about="&amp;map;milk1"&gt;
+    &lt;rdf:type rdf:resource="&amp;knowrob;CowsMilk-Product"/&gt;
+    &lt;knowrob:pathToCadModel rdf:datatype="&amp;xsd;string"
+                        package://knowrob_tutorial/cad/milk.kmz&lt;/knowrob:pathToCadModel&gt;
+&lt;/owl:NamedIndividual&gt;
+</pre>
+
+<h3 class="wiki">Data visualization</h3>
+
+<p>
+Data visualization clients may use the Google Visualization API (Licensed under Creative Commons 3).
+More information can be found on <a href="https://developers.google.com/chart/">https://developers.google.com/chart/</a></p>
+
+<h2 class="wiki subdirs">Sub directories</h2>
+
+<table class="subdirs">
+<tr><td><a class="subdir" href="prolog/index.html">[dir] prolog</a></td></tr>
+</table>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+</table>
+
+</body>
+</html>

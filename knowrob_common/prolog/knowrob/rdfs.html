@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rdfs.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>rdfs.pl -- Reasoning using procedural attachments, called "computables"</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Bernhard Kirchlechner, Moritz Tenorth</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_instance_from_class/2"><b class="pred">rdf_instance_from_class</b><var class="arglist">(+Class, -Inst)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Utility predicate to generate unique instance identifiers
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> describing the type of the instance</td></tr>
+<tr><td><var>Inst</var></td><td class="argdescr">- Identifier of the generated instance of <var>Class</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_instance_from_class/3"><b class="pred">rdf_instance_from_class</b><var class="arglist">(+Class, +SourceRef, -Inst)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Utility predicate to generate unique instance identifiers using
+the source reference <var>SourceRef</var> for rdf_assert
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> describing the type of the instance</td></tr>
+<tr><td><var>SourceRef</var></td><td class="argdescr">- Atom as source reference for rdf_assert</td></tr>
+<tr><td><var>Inst</var></td><td class="argdescr">- Identifier of the generated instance of <var>Class</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_unique_id/2"><b class="pred">rdf_unique_id</b><var class="arglist">(+Class, -UniqID)</var></a> is <b class="det">det</b></dt><dd class="defbody"><var>UniqID</var> is a IRI that uses <var>Class</var> as prefix and is
+not yet used in the RDF triple store.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Class</var></td><td class="argdescr">- <var>Class</var> IRI</td></tr>
+<tr><td><var>UniqID</var></td><td class="argdescr">- Unused IRI with prefix <var>Class</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_phas/3"><b class="pred">rdf_phas</b><var class="arglist">(+Property, ?P, ?O)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>Property</var> or one of its super properties
+has a property assertion for <var>P</var> with value <var>O</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Property</var></td><td class="argdescr">- A RDF property</td></tr>
+<tr><td><var>P</var></td><td class="argdescr">- A RDF property</td></tr>
+<tr><td><var>O</var></td><td class="argdescr">- A RDF resource</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_has_prolog/3"><b class="pred">rdf_has_prolog</b><var class="arglist">(?Subject, ?Predicate, ?Value)</var></a></dt><dd class="defbody">Calls rdf_has and converts data values to
+Prolog representation (e.g., xsd:float to Prolog number).
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Subject</var></td><td class="argdescr">- RDF resource iri</td></tr>
+<tr><td><var>Predicate</var></td><td class="argdescr">- RDF predicate iri</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- RDF iri or Prolog encoded data value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_assert_prolog/3"><b class="pred">rdf_assert_prolog</b><var class="arglist">(?Subject, ?Predicate, ?Value)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_assert_prolog/4"><b class="pred">rdf_assert_prolog</b><var class="arglist">(?Subject, ?Predicate, ?Value, +Graph)</var></a></dt><dd class="defbody">Asserts a triple to the RDF datastore,
+and accepts some Prolog encoded data values.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Subject</var></td><td class="argdescr">- RDF resource iri</td></tr>
+<tr><td><var>Predicate</var></td><td class="argdescr">- RDF predicate iri</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- RDF iri or Prolog encoded data value</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_value_prolog/3"><b class="pred">rdfs_value_prolog</b><var class="arglist">(+Property, +RDFValue, -PrologValue)</var></a></dt><dd class="defbody">Converts RDF value to native Prolog representation.
+
+<dl class="tags">
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- convert to standard SI unit</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="strip_literal_type/2"><b class="pred">strip_literal_type</b><var class="arglist">(+Input, -Output)</var></a></dt><dd class="defbody">Strip the <code>literal(type(..., Value))</code> and return value if present, else return the original.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_vector_prolog/2"><b class="pred">rdf_vector_prolog</b><var class="arglist">(+In, -Out)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_type_of/2"><b class="pred">rdfs_type_of</b><var class="arglist">(?Resource, ?Type)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>Type</var> is one of the most specific types of Resoure.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Resource</var></td><td class="argdescr">- OWL resource with rdf:type statements</td></tr>
+<tr><td><var>Type</var></td><td class="argdescr">- One of the most specific type statements</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_common_ancestor/2"><b class="pred">rdfs_common_ancestor</b><var class="arglist">(+Classes, ?Ancestor)</var></a></dt><dd class="defbody">Get one of the most specific common ancestors of rdf_classes.</dd>
+</dl>
+
+</body>
+</html>

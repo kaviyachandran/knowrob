@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>temporal.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>temporal.pl -- Predicates for temporal reasoning in KnowRob</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="holds/1"><b class="pred">holds</b><var class="arglist">(+Term)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="holds/2"><b class="pred">holds</b><var class="arglist">(+Term, ?Interval)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="holds/3"><b class="pred">holds</b><var class="arglist">(?S, ?P, ?O)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="holds/4"><b class="pred">holds</b><var class="arglist">(?S, ?P, ?O, ?Interval)</var></a></dt><dd class="defbody">True iff relation `<var>P</var>(<var>S</var>,<var>O</var>)` holds during <var>Interval</var>, and with <var>Term</var>=<var>P</var>(<var>S</var>,<var>O</var>).
+Where <var>Interval</var> is a TimeInterval or TimePoint individual,
+a number or a list of two numbers representing a time interval.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Term</var></td><td class="argdescr">- Must be of the form: PROPERTY(SUBJECT, OBJECT).</td></tr>
+<tr><td><var>T</var></td><td class="argdescr">- Can be TimeInterval or TimePoint individual, a number or a list of two numbers representing a time interval.</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="occurs/1"><b class="pred">occurs</b><var class="arglist">(?Evt)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="occurs/2"><b class="pred">occurs</b><var class="arglist">(?Evt, ?Time)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="occurs/3"><b class="pred">occurs</b><var class="arglist">(?Evt, ?Time, ?Type)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True iff <var>Evt</var> occurs during <var>Time</var>. Where <var>Time</var> is a TimeInterval or TimePoint individual,
+a number or a list of two numbers representing a time interval.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Evt</var></td><td class="argdescr">- Identifier of the event</td></tr>
+<tr><td><var>Time</var></td><td class="argdescr">- Timepoint or time interval</td></tr>
+<tr><td><var>Type</var></td><td class="argdescr">- The event type iri</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_individual_of_during/2"><b class="pred">owl_individual_of_during</b><var class="arglist">(?Resource, ?Description)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_individual_of_during/3"><b class="pred">owl_individual_of_during</b><var class="arglist">(?Resource, ?Description, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>Resource</var> satisfies <var>Description</var> during <var>Interval</var>
+(or at the moment if not specified)
+according the the OWL-<var>Description</var> entailment rules,
+with additional computable and temporal semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Resource</var></td><td class="argdescr">- OWL resource identifier</td></tr>
+<tr><td><var>Description</var></td><td class="argdescr">- OWL class description</td></tr>
+<tr><td><var>Interval</var></td><td class="argdescr">- The interval during which the <var>Resource</var> satisfies <var>Description</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_has_during/4"><b class="pred">owl_has_during</b><var class="arglist">(?Subject, ?Predicate, ?Object, ?Interval)</var></a></dt><dd class="defbody">True if this relation is specified, or can be deduced using OWL
+inference rules, computable semantics, or temporal semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Subject</var></td><td class="argdescr">- OWL resource iri</td></tr>
+<tr><td><var>Predicate</var></td><td class="argdescr">- Property iri</td></tr>
+<tr><td><var>Object</var></td><td class="argdescr">- OWL resource iri or datatype value</td></tr>
+<tr><td><var>Interval</var></td><td class="argdescr">- The interval during which the relation holds</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_instance_of_during/3"><b class="pred">rdfs_instance_of_during</b><var class="arglist">(?Resource, ?RDF_Type, Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>RDF_Type</var> is the type of <var>Resource</var> during <var>Interval</var>
+according to RDFS, computable, or temporal semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Resource</var></td><td class="argdescr">- RDF resource iri</td></tr>
+<tr><td><var>RDF_Type</var></td><td class="argdescr">- RDF type iri</td></tr>
+<tr><td><var>Interval</var></td><td class="argdescr">- The interval during which <var>RDF_Type</var> is the type of <var>Resource</var></td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdfs_has_during/4"><b class="pred">rdfs_has_during</b><var class="arglist">(?Subject, ?Predicate, ?Object, ?Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if the RDF triple store contains (<var>Subject</var> <var>Predicate</var> <var>Object</var>),
+or if the triple can be derived from computable predicates,
+or temporal semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Property</var></td><td class="argdescr">- The property iri</td></tr>
+<tr><td><var>Frame</var></td><td class="argdescr">- RDF resource iri</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- RDF resource iri or datatype value</td></tr>
+<tr><td><var>Interval</var></td><td class="argdescr">- The interval during which the triple holds</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rdf_triple_during/4"><b class="pred">rdf_triple_during</b><var class="arglist">(?Property, ?Frame, ?Value, ?Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if the RDF triple store contains (<var>Frame</var> <var>Property</var> <var>Value</var>),
+or if the triple can be derived from computable predicates,
+or temporal semantics.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Property</var></td><td class="argdescr">- The property iri</td></tr>
+<tr><td><var>Frame</var></td><td class="argdescr">- RDF resource iri</td></tr>
+<tr><td><var>Value</var></td><td class="argdescr">- RDF resource iri or datatype value</td></tr>
+<tr><td><var>Interval</var></td><td class="argdescr">- The interval during which the triple holds</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="current_temporal_part/2"><b class="pred">current_temporal_part</b><var class="arglist">(?Obj, ?TemporalPart)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">true for any OWL individual <var>Obj</var> that has a temporal part <var>TemporalPart</var>
+whose relation still holds at the moment.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- The object with temporal relations</td></tr>
+<tr><td><var>TemporalPart</var></td><td class="argdescr">- A temporal part of the object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="temporal_part/3"><b class="pred">temporal_part</b><var class="arglist">(?Obj, ?TemporalPart, ?TemporalExtend)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">true for any OWL individual <var>Obj</var> that has a temporal part <var>TemporalPart</var>
+whose temporal extend is described by <var>TemporalExtend</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- The object with temporal relations</td></tr>
+<tr><td><var>TemporalPart</var></td><td class="argdescr">- A temporal part of the object</td></tr>
+<tr><td><var>TemporalExtend</var></td><td class="argdescr">- The temporal extend of the temporal part</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="assert_temporal_part/3"><b class="pred">assert_temporal_part</b><var class="arglist">(+S, +P, +O)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="assert_temporal_part/4"><b class="pred">assert_temporal_part</b><var class="arglist">(+S, +P, +O, +I)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="assert_temporal_part/5"><b class="pred">assert_temporal_part</b><var class="arglist">(+S, +P, +O, +I, +Graph)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Asserts a temporal relation between <var>S</var> and <var>O</var> using the relation
+predicate <var>P</var> that holds during the time interval <var>I</var>. <var>O</var> is either an OWL individual,
+a term <code>nontemporal(Iri)</code> or a typed data value.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>S</var></td><td class="argdescr">- The subject of the relation</td></tr>
+<tr><td><var>P</var></td><td class="argdescr">- The relation predicate</td></tr>
+<tr><td><var>O</var></td><td class="argdescr">- The object of the relation or a typed data value</td></tr>
+<tr><td><var>I</var></td><td class="argdescr">- The time interval during which the relation holds</td></tr>
+<tr><td><var>Graph</var></td><td class="argdescr">- The RDF graph name</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="assert_temporal_part_end/3"><b class="pred">assert_temporal_part_end</b><var class="arglist">(+S, ?P, ?O)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="assert_temporal_part_end/4"><b class="pred">assert_temporal_part_end</b><var class="arglist">(+S, ?P, ?O, +End)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="assert_temporal_part_end/5"><b class="pred">assert_temporal_part_end</b><var class="arglist">(+S, ?P, ?O, +End, +Graph)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Assert that a given relation `<var>P</var>(<var>S</var>,<var>O</var>)` stopped holding starting from
+specified time instant <var>End</var> (or current time if <var>End</var> is not specified).
+The assertion specifies the <code>endTime</code> of the temporal extend of the
+temporal part that describes this relation.
+Additionally any non-temporal representation of this relation will be retracted
+(so that standard reasoners won't yield this relation anymore).
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>S</var></td><td class="argdescr">- The subject of the relation</td></tr>
+<tr><td><var>P</var></td><td class="argdescr">- The relation predicate</td></tr>
+<tr><td><var>O</var></td><td class="argdescr">- The object of the relation or a data-typed value</td></tr>
+<tr><td><var>End</var></td><td class="argdescr">- The time instant at which the relation stopped holding</td></tr>
+<tr><td><var>Graph</var></td><td class="argdescr">- The RDF graph name</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="temporal_part_has/3"><b class="pred">temporal_part_has</b><var class="arglist">(?Subject, ?Predicate, ?Object)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="temporal_part_has/4"><b class="pred">temporal_part_has</b><var class="arglist">(?Subject, ?Predicate, ?Object, ?Interval)</var></a></dt><dd class="defbody">True if this relation is specified via knowrob:TemporalPart
+or can be deduced using OWL inference rules.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="current_time/1"><b class="pred">current_time</b><var class="arglist">(-CurrentTime)</var></a></dt><dd class="defbody">Unifies <var>CurrentTime</var> with the current time in seconds.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="time_term/2"><b class="pred">time_term</b><var class="arglist">(+Timepoint, -TimeTerm)</var></a></dt><dd class="defbody"><var>TimeTerm</var> is a numerical representation of <var>Timepoint</var>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="time_between/3"><b class="pred">time_between</b><var class="arglist">(+T, +T0, +T1)</var></a></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="time_between/2"><b class="pred">time_between</b><var class="arglist">(+T, +Interval)</var></a></dt><dd class="defbody">True iff <var>T0</var> &lt;= <var>T</var> &lt;= <var>T1</var>, and
+<var>Interval</var>=[<var>T0</var>,<var>T1</var>].</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="time_later_then/2"><b class="pred">time_later_then</b><var class="arglist">(+T0, +T1)</var></a></dt><dd class="defbody">True iff <var>T0</var> &gt;= <var>T1</var></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="time_earlier_then/2"><b class="pred">time_earlier_then</b><var class="arglist">(+T0, +T1)</var></a></dt><dd class="defbody">True iff <var>T0</var> &lt;= <var>T1</var></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval/2"><b class="pred">interval</b><var class="arglist">(+In, -Out)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">True if <var>Out</var> is the interval of <var>In</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>In</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>Out</var></td><td class="argdescr">- Start and end time of the interval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_start/2"><b class="pred">interval_start</b><var class="arglist">(I, End)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">The start time of <var>I</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_end/2"><b class="pred">interval_end</b><var class="arglist">(I, End)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">The end time of <var>I</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_before/2"><b class="pred">interval_before</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I0</var> takes place before <var>I1</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_after/2"><b class="pred">interval_after</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I0</var> takes place after <var>I1</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_meets/2"><b class="pred">interval_meets</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Intervals <var>I0</var> and <var>I1</var> meet, i.e. the end time of <var>I0</var> is equal to the start time of <var>I1</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_starts/2"><b class="pred">interval_starts</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I0</var> starts interval <var>I1</var>, i.e. both have the same start time, but <var>I0</var> finishes earlier
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_finishes/2"><b class="pred">interval_finishes</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I0</var> finishes interval <var>I1</var>, i.e. both have the same end time, but <var>I0</var> starts later
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_overlaps/2"><b class="pred">interval_overlaps</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I0</var> overlaps temporally with <var>I1</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="interval_during/2"><b class="pred">interval_during</b><var class="arglist">(I0, I1)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I0</var> is inside interval <var>I1</var>, i.e. it starts later and finishes earlier than <var>I1</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I0</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+<tr><td><var>I1</var></td><td class="argdescr">- Time point, interval or temporally extended entity</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

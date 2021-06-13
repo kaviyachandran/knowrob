@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">knowrob</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="srdl2.html">srdl2.pl</a></span>&nbsp; -- Reasoning about robot components and capabilities<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="srdl2.html#action_feasible_on_robot/2">action_feasible_on_robot/2</a></td><td class="summary">Verifies that an action is feasible on the given robot by making sure that neither capabilites nor components are missing.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#comp_baselink_pose/2">comp_baselink_pose/2</a></td><td class="summary">Computes the pose of a component composition as the pose of one of its base links.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#srdl_inFieldOfView/2">srdl_inFieldOfView/2</a></td><td class="summary">Check if Obj is visible by Agent at time Instant by reading the camera properties from the robot's SRDL description and computing whether the object center is inside the view frustrum.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#action_feasible_with_components/4">action_feasible_with_components/4</a></td><td class="summary">True for feasible actions of type ActionC for which a Components list exists such that each element is one of the required components without any unsatisfied restrictions imposed on the action described by ActionD.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#cap_available_on_robot/2">cap_available_on_robot/2</a></td><td class="summary">Check if a capability is available on a robot.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#comp_installable_for_action/4">comp_installable_for_action/4</a></td><td class="summary">For each insufficient component for the action, obtain a set of sufficient component individuals that could be installed on the robot.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#comp_installable_on_robot/3">comp_installable_on_robot/3</a></td><td class="summary">True for components Comp of type CompC that can be installed on the robot.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#comp_restricted_action/3">comp_restricted_action/3</a></td><td class="summary">Yields restricted action classes of components that are subclass of the action class.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#comp_type_available/2">comp_type_available/2</a></td><td class="summary">Check if Super has a sub-component Sub of type SubT (i.e.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#insufficient_comp_for_action/4">insufficient_comp_for_action/4</a></td><td class="summary">Insufficient components are required, but not available on the robot or available but not satisfying some restrictions imposed on the action (e.g., weak arms can't lift heavy objects).</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#missing_cap_for_action/3">missing_cap_for_action/3</a></td><td class="summary">Missing capabilites are required, but not available on the robot.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#missing_comp_for_action/3">missing_comp_for_action/3</a></td><td class="summary">Missing components are required, but not available on the robot.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#missing_for_action/4">missing_for_action/4</a></td><td class="summary">Determines all components and capabilites that are required by an action, but are not available on the given robot.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#required_cap_for_action/2">required_cap_for_action/2</a></td><td class="summary">Capabilities required by an action and all of its sub-actions.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#required_comp_for_action/2">required_comp_for_action/2</a></td><td class="summary">Components that are either directly required by an action and all of its sub-actions, or indirectly required by required capabilities.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#robot_part_tf_prefix/2">robot_part_tf_prefix/2</a></td><td class="summary">Checks if the Agent individual that belongs to this Part (URDF Link) has a tf Prefix assigned TfPrefix defaults to '/'.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#robot_tf_prefix/2">robot_tf_prefix/2</a></td><td class="summary">Checks if an Agent individual has a tf Prefix assigned TfPrefix defaults to '/'.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#sub_component/2">sub_component/2</a></td><td class="summary">Recursively read all sub-components of a robot or a component.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#succeeding_link/2">succeeding_link/2</a></td><td class="summary">Check if SucceedingLink is successor link of BaseLink.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#unsatisfied_restr_for_action/5">unsatisfied_restr_for_action/5</a></td><td class="summary">Checks if any action restriction imposed on robot or component level is unsatisfied.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#unsatisfied_restr_for_comp/5">unsatisfied_restr_for_comp/5</a></td><td class="summary">Checks if any action restriction is unsatisfied.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="srdl2.html#unsatisfied_restr_for_required_comp/5">unsatisfied_restr_for_required_comp/5</a></td><td class="summary">Checks if any action restriction imposed on component level is unsatisfied.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

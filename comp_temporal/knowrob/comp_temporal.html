@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>comp_temporal.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>comp_temporal.pl -- Computable properties for spatial reasoning</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Lars Kunze</dd><dd class="keyword-author">- Daniel Beßler</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_temporallySubsumes/2"><b class="pred">comp_temporallySubsumes</b><var class="arglist">(?Long, ?Short)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if the time segment <var>Long</var> contains the segment or time point <var>Short</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Long</var></td><td class="argdescr">- Identifier of the longer time segment</td></tr>
+<tr><td><var>Short</var></td><td class="argdescr">- Identifier of the contained time segment or time point</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_duration/2"><b class="pred">comp_duration</b><var class="arglist">(Event, Duration)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Calculate the duration of the the TemporalThing <var>Event</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Event</var></td><td class="argdescr">- Identifier of a TemporalThing</td></tr>
+<tr><td><var>Duration</var></td><td class="argdescr">- <var>Duration</var> of the event</td></tr>
+</table>
+
+</dd>
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- <var>Duration</var> should be <code>literal(type(qudt:'MinuteTime', Duration))</code></dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_equalI/2"><b class="pred">comp_equalI</b><var class="arglist">(?I1, ?I2)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I1</var> is equal to <var>I2</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I1</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+<tr><td><var>I2</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_overlapsInvI/2"><b class="pred">comp_overlapsInvI</b><var class="arglist">(I1, I2)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I2</var> overlaps temporally with <var>I1</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I1</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+<tr><td><var>I2</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_meetsInvI/2"><b class="pred">comp_meetsInvI</b><var class="arglist">(I1, I2)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Intervals <var>I1</var> and <var>I2</var> meet, i.e. the end time of <var>I2</var> is equal to the start time of <var>I1</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I1</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+<tr><td><var>I2</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_duringInvI/2"><b class="pred">comp_duringInvI</b><var class="arglist">(I1, I2)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I2</var> is inside interval <var>I1</var>, i.e. it starts later and finishes earlier than <var>I1</var>.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I1</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+<tr><td><var>I2</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_startsInvI/2"><b class="pred">comp_startsInvI</b><var class="arglist">(I1, I2)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I2</var> starts interval <var>I1</var>, i.e. both have the same start time, but <var>I2</var> finishes earlier
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I1</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+<tr><td><var>I2</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_finishesInvI/2"><b class="pred">comp_finishesInvI</b><var class="arglist">(I1, I2)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Interval <var>I2</var> finishes interval <var>I1</var>, i.e. both have the same end time, but <var>I2</var> starts later
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>I1</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+<tr><td><var>I2</var></td><td class="argdescr">- Instance of a knowrob:TimeInterval</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

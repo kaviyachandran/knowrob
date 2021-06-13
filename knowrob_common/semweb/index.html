@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>semweb</title>
+
+<link rel="stylesheet" type="text/css" href="../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="dir">semweb</h1>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+<tr><th colspan="3" class="file"><span style="float:left"><a href="owl.html">owl.pl</a></span><span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="owl.html#owl_cardinality/3">owl_cardinality/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_cardinality/4">owl_cardinality/4</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_cardinality_on_class/4">owl_cardinality_on_class/4</a></td><td class="summary"><code class="nofile">TODO</code>(DB): could also infer min cardinality based on restrictions on parent and siblings --&gt; accumulate max values and take difference to superclass min value (only if all direct subclasses restricted).</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_cardinality_on_subject/4">owl_cardinality_on_subject/4</a></td><td class="summary">Deduces the minimum and maximum cardinality for a property of a resource.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_common_ancestor/2">owl_common_ancestor/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_description/2">owl_description/2</a></td><td class="summary">Convert an owl description into a Prolog representation.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_description_assert/2">owl_description_assert/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_direct_subclass_of/2">owl_direct_subclass_of/2</a></td><td class="summary">Returns both the RDFS subclasses and subclass relations implied by owl:intersectionOf and owl:unionOf descriptions.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_disjoint_with/2">owl_disjoint_with/2</a></td><td class="summary">MT: Tests if Class1 and Class2 are disjoint, taking both individual disjointWith properties and the OWL2 AllDisjointClasses into account.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_find/5">owl_find/5</a></td><td class="summary">Search all classes below Domain for a literal property with that matches String.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_has/3">owl_has/3</a></td><td class="summary">True if this relation is specified or can be deduced using OWL inference rules.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_has_direct/3">owl_has_direct/3</a></td><td class="summary">Deals with `One-step' OWL inferencing: inverse properties, symmetric properties and being subtype of a restriction with an owl:hasValue statement on this property.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_individual_of/2">owl_individual_of/2</a></td><td class="summary">Test or generate the resources that satisfy Description according the the OWL-Description entailment rules.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_individual_of_description/2">owl_individual_of_description/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_inverse_functional/1">owl_inverse_functional/1</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_inverse_property/2">owl_inverse_property/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_inverse_property_chain/2">owl_inverse_property_chain/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_merged_restriction/3">owl_merged_restriction/3</a></td><td class="summary">As <a href="owl.html#owl_restriction_on/2">owl_restriction_on/2</a>, but combines multiple restrictions into the least strict restriction satisfying the declared restrictions.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_most_specific/2">owl_most_specific/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_most_specific_predicate/2">owl_most_specific_predicate/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_property_range_on_class/3">owl_property_range_on_class/3</a></td><td class="summary">NOTE(DB): Ranges on classes are only inferred once and then cached because inferring the range based on cardinality restrictions is very expensive.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_property_range_on_resource/3">owl_property_range_on_resource/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_property_range_on_subject/3">owl_property_range_on_subject/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_restriction/2">owl_restriction/2</a></td><td class="summary">Translate Resource, an individual of owl:restriction into a Prolog term.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_restriction_assert/2">owl_restriction_assert/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_restriction_object_domain/2">owl_restriction_object_domain/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_restriction_on/2">owl_restriction_on/2</a></td><td class="summary">Enumerate the restrictions that apply to PropertyID for Class.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_restriction_on/3">owl_restriction_on/3</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_restriction_subject_type/2">owl_restriction_subject_type/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_same_as/2">owl_same_as/2</a></td><td class="summary">True if X and Y are identical or connected by the owl:sameAs relation.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_satisfies/2">owl_satisfies/2</a></td><td class="summary">Test whether Resource satisfies Specification.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_subclass_of/2">owl_subclass_of/2</a></td><td class="summary">Transitive version of <a href="owl.html#owl_direct_subclass_of/2">owl_direct_subclass_of/2</a>.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_subproperty_of/2">owl_subproperty_of/2</a></td><td class="summary"></td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl.html#owl_unsatisfied_restriction/2">owl_unsatisfied_restriction/2</a></td><td class="summary">True if Resource does not satisfy the class description Restriction.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="owl_export.html">owl_export.pl</a></span>&nbsp; -- Methods for exporting triples into OWL files<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="owl_export.html#export_action/2">export_action/2</a></td><td class="summary">Export an action specification (TBOX) to an OWL file.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl_export.html#export_map/2">export_map/2</a></td><td class="summary">Export the map as the set of all perceptions of objects to an OWL file.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl_export.html#export_object/2">export_object/2</a></td><td class="summary">Export the perception of an object to an OWL file.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr class="public"><td><a href="owl_export.html#export_object_class/2">export_object_class/2</a></td><td class="summary">Export the definition of an object class to an OWL file.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+<tr><th colspan="3" class="file"><span style="float:left"><a href="owl_parser.html">owl_parser.pl</a></span>&nbsp; -- Methods for recursively parsing OWL files<span style="float:right"></span></th></tr>
+<tr class="public"><td><a href="owl_parser.html#owl_parse/1">owl_parse/1</a></td><td class="summary">Parse an OWL file and load it into the local RDF database.</td><td align="right"><span style="white-space: nowrap"></span></td></tr>
+</table>
+
+</body>
+</html>

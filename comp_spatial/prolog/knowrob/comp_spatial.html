@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>comp_spatial.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>comp_spatial.pl -- Predicates for spatial reasoning</h1>
+
+<dl class="tags">
+<dt class="keyword-author">author</dt><dd class="keyword-author">- Moritz Tenorth</dd><dd class="keyword-author">- Lars Kunze</dd>
+<dt class="keyword-license">license</dt><dd class="keyword-license">- BSD</dd>
+</dl>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="on_Physical/2"><b class="pred">on_Physical</b><var class="arglist">(?Top, ?Bottom)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="on_Physical/3"><b class="pred">on_Physical</b><var class="arglist">(?Top, ?Bottom, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Top</var> is in the area of and above <var>Bottom</var>.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Top</var></td><td class="argdescr">- Identifier of the upper Object</td></tr>
+<tr><td><var>Bottom</var></td><td class="argdescr">- Identifier of the lower Object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_above_of/2"><b class="pred">comp_above_of</b><var class="arglist">(?Top, ?Bottom)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_above_of/3"><b class="pred">comp_above_of</b><var class="arglist">(?Top, ?Bottom, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Top</var> is in the area of and above <var>Bottom</var>.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Top</var></td><td class="argdescr">- Identifier of the upper Object</td></tr>
+<tr><td><var>Bottom</var></td><td class="argdescr">- Identifier of the lower Object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_below_of/2"><b class="pred">comp_below_of</b><var class="arglist">(?Bottom, ?Top)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_below_of/3"><b class="pred">comp_below_of</b><var class="arglist">(?Bottom, ?Top, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Top</var> is in the area of and above <var>Bottom</var>.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Bottom</var></td><td class="argdescr">- Identifier of the lower Object</td></tr>
+<tr><td><var>Top</var></td><td class="argdescr">- Identifier of the upper Object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_toTheLeftOf/2"><b class="pred">comp_toTheLeftOf</b><var class="arglist">(?Left, ?Right)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_toTheLeftOf/3"><b class="pred">comp_toTheLeftOf</b><var class="arglist">(?Left, ?Right, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Left</var> is to the left of <var>Right</var>.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Left</var></td><td class="argdescr">- Identifier of the left Object</td></tr>
+<tr><td><var>Right</var></td><td class="argdescr">- Identifier of the right Object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_toTheRightOf/2"><b class="pred">comp_toTheRightOf</b><var class="arglist">(?Right, ?Left)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_toTheRightOf/3"><b class="pred">comp_toTheRightOf</b><var class="arglist">(?Right, ?Left, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Right</var> is to the right of <var>Left</var>.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Right</var></td><td class="argdescr">- Identifier of the right Object</td></tr>
+<tr><td><var>Left</var></td><td class="argdescr">- Identifier of the left Object</td></tr>
+</table>
+
+</dd>
+<dt class="keyword-see">See also</dt><dd class="keyword-see">- comp_toTheLeftOf</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_toTheSideOf/2"><b class="pred">comp_toTheSideOf</b><var class="arglist">(?A, ?B)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_toTheSideOf/3"><b class="pred">comp_toTheSideOf</b><var class="arglist">(?A, ?B, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>A</var> is either to the left or the rigth of <var>B</var>.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>A</var></td><td class="argdescr">- Identifier of Object <var>A</var></td></tr>
+<tr><td><var>B</var></td><td class="argdescr">- Identifier of Object <var>B</var></td></tr>
+</table>
+
+</dd>
+<dt class="keyword-see">See also</dt><dd class="keyword-see">- comp_toTheLeftOf</dd><dd class="keyword-see">- comp_toTheRightOf</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_inFrontOf/2"><b class="pred">comp_inFrontOf</b><var class="arglist">(?Front, ?Back)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_inFrontOf/3"><b class="pred">comp_inFrontOf</b><var class="arglist">(?Front, ?Back, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Front</var> is in front of <var>Back</var>. Currently does not take the orientation
+into account, only the position and dimension.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Front</var></td><td class="argdescr">- Identifier of the front Object</td></tr>
+<tr><td><var>Back</var></td><td class="argdescr">- Identifier of the back Object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_inCenterOf/2"><b class="pred">comp_inCenterOf</b><var class="arglist">(?Inner, ?Outer)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_inCenterOf/3"><b class="pred">comp_inCenterOf</b><var class="arglist">(?Inner, ?Outer, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>Inner</var> is in the center of OuterObj. Currently does not take the orientation
+into account, only the position and dimension.
+
+<p>
+Implemented as a wrapper predicate around <code>holds(...)</code> that computes the relation for the
+current point in time</p>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Inner</var></td><td class="argdescr">- Identifier of the inner Object</td></tr>
+<tr><td><var>Outer</var></td><td class="argdescr">- Identifier of the outer Object</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="in_ContGeneric/2"><b class="pred">in_ContGeneric</b><var class="arglist">(?InnerObj, ?OuterObj)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="in_ContGeneric/3"><b class="pred">in_ContGeneric</b><var class="arglist">(?InnerObj, ?OuterObj, +Interval)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Check if <var>InnerObj</var> is contained by <var>OuterObj</var>. Currently does not take the orientation
+into account, only the position and dimension.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="comp_center/2"><b class="pred">comp_center</b><var class="arglist">(+Obj, ?Center)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Compute the center point of an object from its homography matrix
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Obj</var></td><td class="argdescr">- The object identifier</td></tr>
+<tr><td><var>Center</var></td><td class="argdescr">- The center point identifier as a String 'translation_&lt;rotation matrix identifier&gt;'</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="objectAtPoint2D/2"><b class="pred">objectAtPoint2D</b><var class="arglist">(+Point2D, ?Obj)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Compute which objects are positioned at the (x,y) coordinate of <var>Point2D</var>
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Point2D</var></td><td class="argdescr">- Instance of a knowrob:<var>Point2D</var> for which the xCoord and yCoord can be computed</td></tr>
+<tr><td><var>Obj</var></td><td class="argdescr">- Objects whose bounding boxes overlap this point in x,y direction</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="objectAtPoint2D/3"><b class="pred">objectAtPoint2D</b><var class="arglist">(+PX, +PY, ?Obj)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Compute which objects are positioned at the given (x,y) coordinate
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>PX</var></td><td class="argdescr">- X coordinate to be considered</td></tr>
+<tr><td><var>PY</var></td><td class="argdescr">- Y coordinate to be considered</td></tr>
+<tr><td><var>Obj</var></td><td class="argdescr">- Objects whose bounding boxes overlap this point in x,y direction</td></tr>
+</table>
+
+</dd>
+<dt class="keyword-bug">bug</dt><dd class="keyword-bug">- THIS IS BROKEN FOR ALL NON-STANDARD ROTATIONS if the upper left matrix is partly zero</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

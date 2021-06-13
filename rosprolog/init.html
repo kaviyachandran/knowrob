@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>/home/daniel/coding/knowrob.daniel/src/knowrob/rosprolog/prolog/init.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>init.pl</h1>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="init_ros_package/1"><b class="pred">init_ros_package</b><var class="arglist">(+PackagePath)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Initialize a KnowRob package by consulting the <a class="file" href="">init.pl</a> file.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>PackagePath</var></td><td class="argdescr">- Path towards the package to be initialized</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="register_ros_package/1"><b class="pred">register_ros_package</b><var class="arglist">(+Package)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><span style="float:right"></span><a name="register_ros_package/2"><b class="pred">register_ros_package</b><var class="arglist">(+Package, ?AbsoluteDirectory)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Find and initialize a KnowRob package.
+Locate the package on the harddisk, add the path
+to the library search path, and consult the <a class="file" href="">init.pl</a>
+file that (recursively) initializes the package and its dependencies.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Package</var></td><td class="argdescr">- Name of a ROS package</td></tr>
+<tr><td><var>AbsoluteDirectory</var></td><td class="argdescr">- Global path to the 'prolog' subdirectory in the given package</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="use_ros_module/2"><b class="pred">use_ros_module</b><var class="arglist">(+Package, +FilePath)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Registers <var>Package</var> and uses the module at <var>FilePath</var>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="rosprolog_classpaths/1"><b class="pred">rosprolog_classpaths</b><var class="arglist">(+Paths)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Read all classpath files from workspaces referenced in ROS_PACKAGE_PATH
+to set up Java environment.
+
+<dl class="tags">
+<dt class="tag">Arguments:</dt><dd>
+
+<table class="arglist">
+<tr><td><var>Paths</var></td><td class="argdescr">- The CLASSPATH environment variable</td></tr>
+</table>
+
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+</body>
+</html>

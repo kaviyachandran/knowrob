@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>knowrob_objects</title>
+
+<link rel="stylesheet" type="text/css" href="../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="wiki">knowrob_objects</h1>
+
+<p>
+Utilities for reasoning about objects,
+and for maintaining beliefs about them.</p>
+
+<p>
+In particular relevant are visual and
+geometrical properties such as
+color (<a class="extmanual" href="http://www.swi-prolog.org/pldoc/man?predicate=object_color/3">object_color/3</a>),
+size (<a href="objects.html#object_dimensions/4">object_dimensions/4</a>),
+mesh (<a href="objects.html#object_mesh_path/2">object_mesh_path/2</a>), and
+pose (<a href="objects.html#current_object_pose/2">current_object_pose/2</a>, <a href="objects.html#object_pose_at_time/3">object_pose_at_time/3</a>) of an object.</p>
+
+<p>
+Beliefs may be updated based on objects the robot perceived.
+There are several utility predicates in <code class="nofile">beliefstate.pl</code> that
+can be used for updating beliefs about objects:
+where they are, in which frame they are fixed, and
+how their properties change over time.</p>
+
+<p>
+In addition, users may assert perception events
+to the knowledge base that describe the mental process of perceiving
+and what the outcome was for a particular event instance.
+Utility predicates for maintaining such perception events can be found in
+<code class="nofile">perception.pl</code>.</p>
+
+<h3 class="wiki">object_state_publisher.py</h3>
+
+<p>
+An additional script is provided that is used to publish
+object transforms on the ROS tf topic along with
+marker visualization messages.
+This is realized as a json_prolog client that
+initially loads all known objects, and
+provides a service to mark objects as "dirty" which causes
+the script to reload the dirty objects, and
+to republish tf and marker visualization messages.</p>
+
+<p>
+You can run the publisher with:</p>
+
+<pre class="code">
+rosrun knowrob_objects object_state_publisher.py
+</pre>
+
+<h2 class="wiki subdirs">Sub directories</h2>
+
+<table class="subdirs">
+<tr><td><a class="subdir" href="prolog/index.html">[dir] prolog</a></td></tr>
+</table>
+
+<h2 class="wiki plfiles">Prolog files</h2>
+
+<table class="summary">
+</table>
+
+</body>
+</html>

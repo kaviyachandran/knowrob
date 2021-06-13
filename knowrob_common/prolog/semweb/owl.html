@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>owl.pl</title>
+
+<link rel="stylesheet" type="text/css" href="../../../pldoc.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+
+
+<h1 class="file"><span style="float:right"></span>owl.pl</h1>
+
+<dl>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_restriction_on/2"><b class="pred">owl_restriction_on</b><var class="arglist">(+ClassID, -Restriction:restriction(?(PropertyID),?(Restriction)))</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Enumerate the restrictions that apply to <var>PropertyID</var> for Class.
+<var>Restriction</var> is one of
+<ul>
+<li><code>all_values_from(Class)</code></li>
+<li><code>some_values_from(Class)</code></li>
+<li><code>has_value(Value)</code></li>
+<li><code>cardinality(Min, Max, Class)</code></li>
+</ul>
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_restriction_on/3"><b class="pred">owl_restriction_on</b><var class="arglist">(?Resource, ?Property, ?Restriction)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_restriction_object_domain/2"><b class="pred">owl_restriction_object_domain</b><var class="arglist">(?Resource, ?Domain)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_restriction_subject_type/2"><b class="pred">owl_restriction_subject_type</b><var class="arglist">(?Restriction, ?SubjectType)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_restriction/2"><b class="pred">owl_restriction</b><var class="arglist">(+Resource, -Prolog)</var></a> is <b class="det">det</b></dt><dd class="defbody">Translate <var>Resource</var>, an individual of owl:restriction into a <var>Prolog</var> term.
+
+<dl class="tags">
+<dt class="keyword-see">See also</dt><dd class="keyword-see">- <a href="owl.html#owl_restriction_on/2">owl_restriction_on/2</a> for the <var>Prolog</var> representation.</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_restriction_assert/2"><b class="pred">owl_restriction_assert</b><var class="arglist">(+Prolog, -Resource)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_merged_restriction/3"><b class="pred">owl_merged_restriction</b><var class="arglist">(+Class, ?Property, ?Restriction)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">As <a href="owl.html#owl_restriction_on/2">owl_restriction_on/2</a>, but combines multiple restrictions into
+the least strict restriction satisfying the declared
+restrictions.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_property_range_on_resource/3"><b class="pred">owl_property_range_on_resource</b><var class="arglist">(+Resource, +Pred, -Range)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_property_range_on_subject/3"><b class="pred">owl_property_range_on_subject</b><var class="arglist">(+Subject, +Pred, -Range)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_property_range_on_class/3"><b class="pred">owl_property_range_on_class</b><var class="arglist">(+Subject, +Pred, -Range)</var></a> is <b class="det">semidet</b></dt><dd class="defbody">
+
+<blockquote>
+NOTE(DB): Ranges on classes are only inferred once and then cached because inferring
+the range based on cardinality restrictions is very expensive.
+<code class="nofile">TODO</code>(DB): only keep last n inferred ranges in the cache
+<code class="nofile">TODO</code>(DB): use <code>rdf_generation</code> to check if cache needs to be whiped!
+</blockquote>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_cardinality_on_subject/4"><b class="pred">owl_cardinality_on_subject</b><var class="arglist">(+Subject, +Pred, +Descr, -Card:cardinality(Min,Max))</var></a> is <b class="det">semidet</b></dt><dd class="defbody">Deduces the minimum and maximum cardinality for a property of a
+resource. This predicate may fail if no information is available.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_cardinality_on_class/4"><b class="pred">owl_cardinality_on_class</b><var class="arglist">(+Class, ?Predicate, ?Range, -Card:cardinality(Min,Max))</var></a> is <b class="det">semidet</b></dt><dd class="defbody">
+
+<blockquote>
+<code class="nofile">TODO</code>(DB): could also infer min cardinality based on restrictions on parent and siblings
+--&gt; accumulate max values and take difference to superclass min value (only if all direct subclasses restricted)
+</blockquote>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_unsatisfied_restriction/2"><b class="pred">owl_unsatisfied_restriction</b><var class="arglist">(?Resource, +Restriction)</var></a></dt><dd class="defbody">True if <var>Resource</var> does not satisfy the class description <var>Restriction</var>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_cardinality/4"><b class="pred">owl_cardinality</b><var class="arglist">(+Resource, +Property, +Cls, -Card)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_cardinality/3"><b class="pred">owl_cardinality</b><var class="arglist">(+Resource, +Property, -Card)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_description/2"><b class="pred">owl_description</b><var class="arglist">(+DescriptionID, -Prolog)</var></a> is <b class="det">det</b></dt><dd class="defbody">Convert an owl description into a <var>Prolog</var> representation. This
+representation is:
+<ul>
+<li><code>class(Class)</code></li>
+<li><code>restriction(Property, Restriction)</code></li>
+<li><code>union_of(ListOfDescriptions)</code></li>
+<li><code>intersection_of(ListOfDescriptions)</code></li>
+<li><code>complement_of(Description)</code></li>
+<li><code>one_of(Individuals)</code></li>
+<li>thing</li>
+<li>nothing</li>
+</ul>
+
+<p>
+where Restriction is defined by <a href="owl.html#owl_restriction_on/2">owl_restriction_on/2</a>.
+For example, the union-of can be the result of</p>
+
+<pre class="code" ext="">
+&lt;rdfs:Class rdf:ID="myclass"&gt;
+  &lt;owl:unionOf parseType=Collection&gt;
+    &lt;rdf:Description rdf:about="gnu"/&gt;
+    &lt;rdf:Description rdf:about="gnat"/&gt;
+  &lt;/owl:unionOf&gt;
+&lt;/rdfs:Class&gt;
+</pre>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_description_assert/2"><b class="pred">owl_description_assert</b><var class="arglist">(+Prolog, -Resource)</var></a> is <b class="det">det</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_satisfies/2"><b class="pred">owl_satisfies</b><var class="arglist">(+Specification, ?Resource)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Test whether <var>Resource</var> satisfies <var>Specification</var>. All resources are
+considered to belong to rdfs:<var>Resource</var>, which is not really
+enforced. Domain is one of
+
+<table class="wiki">
+<tr><td>rdfs:<var>Resource</var></td><td>Allow for any resource</td></tr>
+<tr><td><code>class(Class)</code></td><td>Allow for a subclass of Class</td></tr>
+<tr><td><code>union_of(Domains)</code></td><td></td></tr>
+<tr><td><code>intersection_of(Domains)</code></td><td></td></tr>
+<tr><td><code>complement_of(Domain)</code></td><td></td></tr>
+<tr><td><code>one_of(Resources)</code></td><td>One of these values</td></tr>
+<tr><td><code>all_values_from(Class)</code></td><td>Individual of this class</td></tr>
+<tr><td><code>some_values_from(Class)</code></td><td>Not used</td></tr>
+<tr><td><code>has_value(Value)</code></td><td>Must have this value</td></tr>
+</table>
+
+<p>
+<var>Resource</var> can be a term <code>individual_of(Class)</code>, in which case this
+predicate succeeds if any individual of Class is accepted by
+Domain.</p></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_individual_of/2"><b class="pred">owl_individual_of</b><var class="arglist">(?Resource, +Description)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Test or generate the resources that satisfy <var>Description</var>
+according the the OWL-<var>Description</var> entailment rules.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_individual_of_description/2"><b class="pred">owl_individual_of_description</b><var class="arglist">(?Resource, +Description)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">
+
+<dl class="tags">
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- Can a description have multiple of these facets?</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_has/3"><b class="pred">owl_has</b><var class="arglist">(?Subject, ?Predicate, ?Object)</var></a></dt><dd class="defbody">True if this relation is specified or can be deduced using OWL
+inference rules. It adds transitivity to <a href="owl.html#owl_has_direct/3">owl_has_direct/3</a>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_same_as/2"><b class="pred">owl_same_as</b><var class="arglist">(?X, ?Y)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">True if <var>X</var> and <var>Y</var> are identical or connected by the owl:sameAs
+relation. Considers owl:sameAs transitive and symetric.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_has_direct/3"><b class="pred">owl_has_direct</b><var class="arglist">(?Subject, ?Predicate, ?Object)</var></a></dt><dd class="defbody">
+
+<blockquote>
+Deals with `One-step' OWL inferencing: inverse properties,
+symmetric properties and being subtype of a restriction with an
+owl:hasValue statement on this property.
+</blockquote>
+
+<p>
+% <code class="nofile">TODO</code>: add support for Equivalent properties and mixes of sub properties/Equivalent ones</p></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_direct_subclass_of/2"><b class="pred">owl_direct_subclass_of</b><var class="arglist">(-SubClass, +Class)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><b class="pred">owl_direct_subclass_of</b><var class="arglist">(+SubClass, -Class)</var> is <b class="det">nondet</b></dt><dd class="defbody">Returns both the RDFS subclasses and subclass relations implied by
+owl:intersectionOf and owl:unionOf descriptions.
+
+<dl class="tags">
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- Should use full DL reasoning</dd>
+</dl>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_subclass_of/2"><b class="pred">owl_subclass_of</b><var class="arglist">(+Sub, -Super)</var></a> is <b class="det">nondet</b></dt>
+<dt class="pubdef"><b class="pred">owl_subclass_of</b><var class="arglist">(-Sub, +Super)</var> is <b class="det">nondet</b></dt><dd class="defbody">Transitive version of <a href="owl.html#owl_direct_subclass_of/2">owl_direct_subclass_of/2</a>.</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_subproperty_of/2"><b class="pred">owl_subproperty_of</b><var class="arglist">(+Sub, -Super)</var></a> is <b class="det">nondet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_most_specific/2"><b class="pred">owl_most_specific</b><var class="arglist">(+Types, -Specific)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_most_specific_predicate/2"><b class="pred">owl_most_specific_predicate</b><var class="arglist">(+Predicates, -P)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_common_ancestor/2"><b class="pred">owl_common_ancestor</b><var class="arglist">(+Types, Common)</var></a> is <b class="det">semidet</b></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_inverse_property/2"><b class="pred">owl_inverse_property</b><var class="arglist">(?P, ?P_inv)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_inverse_property_chain/2"><b class="pred">owl_inverse_property_chain</b><var class="arglist">(?P, ?P_inv)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_inverse_functional/1"><b class="pred">owl_inverse_functional</b><var class="arglist">(?P)</var></a></dt><dd class="defbody"></dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_disjoint_with/2"><b class="pred">owl_disjoint_with</b><var class="arglist">(?Class1, ?Class2)</var></a></dt><dd class="defbody">
+
+<blockquote>
+MT: Tests if <var>Class1</var> and <var>Class2</var> are disjoint, taking both individual disjointWith
+properties and the OWL2 AllDisjointClasses into account
+</blockquote>
+
+</dd>
+<dt class="pubdef"><span style="float:right"></span><a name="owl_find/5"><b class="pred">owl_find</b><var class="arglist">(+String, +Domain, ?Properties, +Method, -Subject)</var></a> is <b class="det">nondet</b></dt><dd class="defbody">Search all classes below <var>Domain</var> for a literal property with
+that matches <var>String</var>. <var>Method</var> is one of
+<ul>
+<li>substring</li>
+<li>word</li>
+<li>prefix</li>
+<li>exact</li>
+</ul>
+
+<p>
+domain is defined by <a href="owl.html#owl_satisfies/2">owl_satisfies/2</a> from <a class="file" href="">owl.pl</a></p>
+
+<p>
+Note that the rdfs:label field is handled by <a class="extmanual" href="http://www.swi-prolog.org/pldoc/man?predicate=rdfs_label/2">rdfs_label/2</a>,
+making the URI-ref fragment name the last resort to determine
+the label.</p>
+
+<dl class="tags">
+<dt class="keyword-tbd">To be done</dt><dd class="keyword-tbd">- Use the RDF literal primitives</dd>
+</dl>
+
+</dd>
+</dl>
+
+<h2 class="undoc">Undocumented predicates</h2>
+
+<p>
+The following predicates are exported, but not or incorrectly documented.</p>
+
+<dl class="undoc">
+<dt class="undoc"><span style="float:right"></span><a name="owl_individual_of_all/2"><b class="pred">owl_individual_of_all</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="owl_individual_from_range/2"><b class="pred">owl_individual_from_range</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="owl_individual_of/3"><b class="pred">owl_individual_of</b><var class="arglist">(Arg1, Arg2, Arg3)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="owl_description_list_assert/2"><b class="pred">owl_description_list_assert</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="rdf_assert_literal/3"><b class="pred">rdf_assert_literal</b><var class="arglist">(Arg1, Arg2, Arg3)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="non_negative_int/2"><b class="pred">non_negative_int</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="owl_cardinality_on_resource/4"><b class="pred">owl_cardinality_on_resource</b><var class="arglist">(Arg1, Arg2, Arg3, Arg4)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="owl_description_recursive/2"><b class="pred">owl_description_recursive</b><var class="arglist">(Arg1, Arg2)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="owl_has/4"><b class="pred">owl_has</b><var class="arglist">(Arg1, Arg2, Arg3, Arg4)</var></a></dt>
+<dt class="undoc"><span style="float:right"></span><a name="non_negative_integer/4"><b class="pred">non_negative_integer</b><var class="arglist">(Arg1, Arg2, Arg3, Arg4)</var></a></dt>
+</dl>
+
+</body>
+</html>
